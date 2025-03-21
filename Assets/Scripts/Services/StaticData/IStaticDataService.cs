@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using CodeBase.StaticData.Heroes;
+using CodeBase.StaticData.Skills;
 using StaticData;
 using StaticData.Levels;
 using Window;
@@ -14,5 +16,7 @@ namespace Services.StaticData
         WindowConfig ForWindow(WindowTypeId windowTypeId);
         LevelStaticData ForLevel(int chapterId, int levelId);
         ChapterStaticData ForChapter(int chapterId);
+        HeroConfig HeroConfigFor(HeroTypeId typeId);
+        HeroSkill HeroSkillFor(SkillTypeId typeId, HeroTypeId heroTypeId);
     }
 }

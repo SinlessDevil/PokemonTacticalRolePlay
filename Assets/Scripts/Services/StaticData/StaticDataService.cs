@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using CodeBase.StaticData.Heroes;
+using CodeBase.StaticData.Skills;
 using Services.Factories.Paths;
 using StaticData;
 using StaticData.Levels;
@@ -15,6 +17,7 @@ namespace Services.StaticData
         private BalanceStaticData _balanceStaticData;
         private Dictionary<WindowTypeId, WindowConfig> _windowConfigs;
         private List<ChapterStaticData> _chapterStaticDatas = new();
+        private Dictionary<HeroTypeId, HeroConfig> _heroConfigs = new();
         
         public GameStaticData GameConfig => _gameStaticData;
         public BalanceStaticData Balance => _balanceStaticData;
@@ -35,6 +38,10 @@ namespace Services.StaticData
             _chapterStaticDatas = Resources
                 .LoadAll<ChapterStaticData>(ResourcePath.ChaptersStaticDataPath)
                 .ToList();
+            
+            _heroConfigs = Resources
+                .LoadAll<HeroConfig>(ResourcePath.HeroConfigFolderPath)
+                .ToDictionary(x => x.TypeId, x => x);
         }
 
         public WindowConfig ForWindow(WindowTypeId windowTypeId) => _windowConfigs[windowTypeId];
@@ -65,6 +72,24 @@ namespace Services.StaticData
             int realChapterIndex = (chapterId - 1) % _chapterStaticDatas.Count;
 
             return _chapterStaticDatas[realChapterIndex];
+        }
+        
+        public HeroConfig HeroConfigFor(HeroTypeId typeId)
+        {
+            if (_heroConfigs.TryGetValue(typeId, out HeroConfig config))
+                return config;
+      
+            throw new KeyNotFoundException($"No config found for {typeId}");
+        }
+
+        public HeroSkill HeroSkillFor(SkillTypeId typeId, HeroTypeId heroTypeId)
+        {
+            HeroConfig heroConfig = HeroConfigFor(heroTypeId);
+            HeroSkill heroSkill = heroConfig.Skills.Find(x => x.TypeId == typeId);
+            if (heroSkill != null)
+                return heroSkill;
+      
+            throw new KeyNotFoundException($"No hero skill config found for {typeId} on {heroTypeId}");
         }
     }
 }
