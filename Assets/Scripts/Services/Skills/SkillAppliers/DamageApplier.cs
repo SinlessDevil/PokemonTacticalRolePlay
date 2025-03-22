@@ -13,6 +13,7 @@ namespace CodeBase.Gameplay.Skills.SkillAppliers
         private readonly IStaticDataService _staticDataService;
         private readonly IHeroRegistry _heroRegistry;
         private readonly IBattleTextPlayer _battleTextPlayer;
+        
         public SkillKind SkillKind => SkillKind.Damage;
 
         public DamageApplier(
@@ -27,6 +28,7 @@ namespace CodeBase.Gameplay.Skills.SkillAppliers
 
         public void WarmUp()
         {
+            
         }
 
         public void ApplySkill(ActiveSkill activeSkill)
@@ -41,7 +43,8 @@ namespace CodeBase.Gameplay.Skills.SkillAppliers
 
                 HeroBehaviour target = _heroRegistry.GetHero(targetId);
                 target.State.CurrentHp -= skill.Value;
-
+                target.Animator.PlayTakeDamage();
+                
                 _battleTextPlayer.PlayText($"{skill.Value}", Color.red, target.transform.position);
                 PlayFx(skill.CustomTargetFx, target.transform.position);
             }

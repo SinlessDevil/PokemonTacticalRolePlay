@@ -1,30 +1,34 @@
-﻿using CodeBase.Extensions;
+﻿using System;
+using CodeBase.Extensions;
 using UnityEngine;
 
 namespace CodeBase.Gameplay.Heroes
 {
     public class HeroAnimator : MonoBehaviour
     {
-        private readonly int _idleStateHash = Animator.StringToHash("Base Layer.Idle");
-        private readonly int _skill1StateHash = Animator.StringToHash("Base Layer.Skill1");
-        private readonly int _skill2StateHash = Animator.StringToHash("Base Layer.Skill2");
-        private readonly int _skill3StateHash = Animator.StringToHash("Base Layer.Skill3");
-        private readonly int _deathStateHash = Animator.StringToHash("Base Layer.Death");
-
-        private readonly int _playDeathHash = Animator.StringToHash("die");
-        private readonly int _playSkill1Hash = Animator.StringToHash("skill1");
-        private readonly int _playSkill2Hash = Animator.StringToHash("skill2");
-        private readonly int _playSkill3Hash = Animator.StringToHash("skill3");
+        private readonly int _idleStateHash = Animator.StringToHash("Idle");
+        private readonly int _playDeathHash = Animator.StringToHash("Die");
+        private readonly int _playTakeDamageHash = Animator.StringToHash("TakeDamage");
+        private readonly int _playSkill1Hash = Animator.StringToHash("CastSpell");
+        private readonly int _playSkill2Hash = Animator.StringToHash("ProjectileAttack");
 
         public Animator Animator;
         private int[] _skills;
+
+        private void OnValidate()
+        {
+            if (Animator == null)
+            {
+                Animator = GetComponentInChildren<Animator>();
+            }
+        }
 
         private void Awake()
         {
             if (Animator == null)
                 Animator = GetComponent<Animator>();
 
-            _skills = new[] { _playSkill1Hash, _playSkill2Hash, _playSkill3Hash };
+            _skills = new[] { _playSkill1Hash, _playSkill2Hash, };
         }
 
         public void PlaySkill(int index)
@@ -39,6 +43,12 @@ namespace CodeBase.Gameplay.Heroes
             Animator.SetTrigger(_playDeathHash);
         }
 
+        public void PlayTakeDamage()
+        {
+            ResetAllTriggers();
+            Animator.SetTrigger(_playTakeDamageHash);
+        }
+        
         private void ResetAllTriggers()
         {
             if (Animator.runtimeAnimatorController == null)

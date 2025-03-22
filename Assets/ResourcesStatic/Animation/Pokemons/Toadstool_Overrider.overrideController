@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Toadstool_Overrider
+  m_Controller: {fileID: 9100000, guid: 92bc66387c5965f4cbd21f301cc29781, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 9007b62bd0f992f4885306a4e1bcf64b, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 99482417ca63efc4fb1b5d7fed47acf8, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 5ac00d3df3341eb4cb96d7fc548cfdd2, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 797a396418c3ad54ea8994ad3ba0c880, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 5279ffa0241322d4f9e5ce114ef07687, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: d8ddff4c64f70674b9f2c66f7c6a3bb8, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 7c4e223953093ea4ab64b107a6acbee4, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 826761f883ac20440aca7c610bc2b7aa, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 0a542e57b829d104fbee8df82020f23b, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 2b9d37f109ee66f4b9cfa369b2ca1071, type: 3}
