@@ -13,6 +13,7 @@ namespace StaticData.Heroes
 
         public List<HeroSkill> Skills;
 
+        public Sprite bgSprite;
         public GameObject Prefab;
     }
 }

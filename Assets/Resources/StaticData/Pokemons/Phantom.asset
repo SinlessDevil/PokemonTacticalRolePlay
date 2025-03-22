@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9aff0ecad36416dbef478701e70ef51, type: 3}
   m_Name: Phantom
   m_EditorClassIdentifier: 
-  TypeId: 21
+  TypeId: 12
   Hp: 40
   Armor: 5
   Initiative: 100
@@ -50,4 +50,5 @@ MonoBehaviour:
       AnimationIndex: 2
       Delay: 0.5
     CustomTargetFx: {fileID: 4333323771432790967, guid: 37e258cf8f5007846a46c2528b0037ef, type: 3}
+  bgSprite: {fileID: 21300000, guid: 5604103f0ebf14ca3bf6b653635c879b, type: 3}
   Prefab: {fileID: 7839633962325119934, guid: 4e4a79c318a7fc343b78d703c5869d4d, type: 3}

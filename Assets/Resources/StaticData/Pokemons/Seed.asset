@@ -50,4 +50,5 @@ MonoBehaviour:
       AnimationIndex: 2
       Delay: 0.2
     CustomTargetFx: {fileID: 0}
+  bgSprite: {fileID: 21300000, guid: 7737f20b135e044d3af299df0b1c7064, type: 3}
   Prefab: {fileID: 7839633962325119934, guid: e23aee787fb8c5744aaf4943b050203c, type: 3}
