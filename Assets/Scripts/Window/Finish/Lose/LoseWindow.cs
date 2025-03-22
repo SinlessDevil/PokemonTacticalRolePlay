@@ -40,15 +40,19 @@ namespace Window.Finish.Lose
         protected override void OnLoadLevelButtonClick()
         {
             _soundService.ButtonClick();
-            
             _gameStateMachine.Enter<LoadLevelState, string>(_staticDataService.GameConfig.GameScene);
         }
 
         protected override void OnExitToMenuButtonClick()
         {
             _soundService.ButtonClick();
-            
             _gameStateMachine.Enter<LoadMenuState, string>(_staticDataService.GameConfig.MenuScene);
         }
-    }   
+
+        protected override void OnRestartLevelButtonClick()
+        {
+            _soundService.ButtonClick();
+            _gameStateMachine.Enter<LoadLevelState, string>(_staticDataService.GameConfig.GameScene);
+        }
+    }
 }
