@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9aff0ecad36416dbef478701e70ef51, type: 3}
+  m_Name: Toadstool
+  m_EditorClassIdentifier: 
+  TypeId: 22
+  Hp: 40
+  Armor: 2
+  Initiative: 60
+  Skills:
+  - TypeId: 1
+    Kind: 1
+    Name: Reap
+    Color: {r: 0.3207547, g: 0.31318974, b: 0.31318974, a: 1}
+    TargetType: 0
+    Value: 8
+    Cooldown: 0
+    Animation:
+      AnimationIndex: 1
+      Delay: 0.5
+    CustomTargetFx: {fileID: 3120323117366962388, guid: 8944e4a5546f64a438090398927b1b96, type: 3}
+  - TypeId: 402
+    Kind: 4
+    Name: Death Grip
+    Color: {r: 0.05660379, g: 0.05660379, b: 0.05660379, a: 1}
+    TargetType: 0
+    Value: 0.3
+    Cooldown: 5
+    Animation:
+      AnimationIndex: 2
+      Delay: 1
+    CustomTargetFx: {fileID: 87106950742767038, guid: bbdd7551db5634b4ab0a2104e83aec00, type: 3}
+  - TypeId: 403
+    Kind: 1
+    Name: Call Beyond
+    Color: {r: 0.32913786, g: 0.0744927, b: 0.509434, a: 1}
+    TargetType: 3
+    Value: 6
+    Cooldown: 12
+    Animation:
+      AnimationIndex: 2
+      Delay: 1
+    CustomTargetFx: {fileID: 87106950742767038, guid: bbdd7551db5634b4ab0a2104e83aec00, type: 3}
+  Prefab: {fileID: 7839633962325119934, guid: 713514d829755ae429ebc5fb4916d59d, type: 3}

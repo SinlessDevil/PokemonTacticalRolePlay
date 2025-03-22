@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9aff0ecad36416dbef478701e70ef51, type: 3}
+  m_Name: Vampire
+  m_EditorClassIdentifier: 
+  TypeId: 23
+  Hp: 30
+  Armor: 2
+  Initiative: 50
+  Skills:
+  - TypeId: 1
+    Kind: 1
+    Name: Punch
+    Color: {r: 0.08232466, g: 0.56802887, b: 0.6981132, a: 1}
+    TargetType: 0
+    Value: 7
+    Cooldown: 0
+    Animation:
+      AnimationIndex: 1
+      Delay: 0.5
+    CustomTargetFx: {fileID: 4830091634964828263, guid: bb2a24e56df321b4688fc2710ed5c5bb, type: 3}
+  - TypeId: 302
+    Kind: 2
+    Name: Support
+    Color: {r: 0.06051977, g: 0.754717, b: 0.4335519, a: 1}
+    TargetType: 1
+    Value: 0.2
+    Cooldown: 4
+    Animation:
+      AnimationIndex: 2
+      Delay: 0.2
+    CustomTargetFx: {fileID: 0}
+  - TypeId: 303
+    Kind: 2
+    Name: Reanimate
+    Color: {r: 0.11442613, g: 0.7075472, b: 0.06341223, a: 1}
+    TargetType: 1
+    Value: 0.8
+    Cooldown: 15
+    Animation:
+      AnimationIndex: 2
+      Delay: 0.2
+    CustomTargetFx: {fileID: 0}
+  Prefab: {fileID: 7839633962325119934, guid: f48756d169bbc5b49bf0e8150a4d5a91, type: 3}
