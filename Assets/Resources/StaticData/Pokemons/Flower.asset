@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Flower
   m_EditorClassIdentifier: 
   TypeId: 8
-  Hp: 30
-  Armor: 2
-  Initiative: 80
+  Hp: 15
+  Armor: 1
+  Initiative: 50
   Skills:
   - TypeId: 1
     Kind: 1

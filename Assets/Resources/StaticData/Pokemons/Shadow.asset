@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Shadow
   m_EditorClassIdentifier: 
   TypeId: 15
-  Hp: 30
-  Armor: 2
-  Initiative: 50
+  Hp: 60
+  Armor: 1
+  Initiative: 70
   Skills:
   - TypeId: 1
     Kind: 1

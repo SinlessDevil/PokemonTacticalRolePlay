@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Spook
   m_EditorClassIdentifier: 
   TypeId: 19
-  Hp: 30
-  Armor: 2
-  Initiative: 100
+  Hp: 15
+  Armor: 15
+  Initiative: 60
   Skills:
   - TypeId: 1
     Kind: 1

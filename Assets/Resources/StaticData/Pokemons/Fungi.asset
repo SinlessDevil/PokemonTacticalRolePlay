@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Fungi
   m_EditorClassIdentifier: 
   TypeId: 9
-  Hp: 30
-  Armor: 2
-  Initiative: 50
+  Hp: 15
+  Armor: 1
+  Initiative: 80
   Skills:
   - TypeId: 1
     Kind: 1

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Chick
   m_EditorClassIdentifier: 
   TypeId: 5
-  Hp: 30
-  Armor: 2
-  Initiative: 80
+  Hp: 10
+  Armor: 3
+  Initiative: 30
   Skills:
   - TypeId: 1
     Kind: 1

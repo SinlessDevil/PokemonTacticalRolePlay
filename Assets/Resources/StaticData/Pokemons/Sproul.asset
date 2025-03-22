@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Sproul
   m_EditorClassIdentifier: 
   TypeId: 20
-  Hp: 40
-  Armor: 2
-  Initiative: 60
+  Hp: 10
+  Armor: 5
+  Initiative: 50
   Skills:
   - TypeId: 1
     Kind: 1

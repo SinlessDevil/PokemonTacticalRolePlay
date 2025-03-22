@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mushroom
   m_EditorClassIdentifier: 
   TypeId: 11
-  Hp: 30
+  Hp: 14
   Armor: 2
   Initiative: 50
   Skills:

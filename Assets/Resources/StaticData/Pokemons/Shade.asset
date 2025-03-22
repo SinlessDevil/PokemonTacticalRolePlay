@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TypeId: 14
   Hp: 30
-  Armor: 2
-  Initiative: 100
+  Armor: 10
+  Initiative: 50
   Skills:
   - TypeId: 1
     Kind: 1

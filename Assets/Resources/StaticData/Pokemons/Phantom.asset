@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9aff0ecad36416dbef478701e70ef51, type: 3}
   m_Name: Phantom
   m_EditorClassIdentifier: 
-  TypeId: 12
-  Hp: 30
-  Armor: 2
+  TypeId: 21
+  Hp: 40
+  Armor: 5
   Initiative: 100
   Skills:
   - TypeId: 1

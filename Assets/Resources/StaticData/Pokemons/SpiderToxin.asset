@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: SpiderToxin
   m_EditorClassIdentifier: 
   TypeId: 18
-  Hp: 40
-  Armor: 2
-  Initiative: 60
+  Hp: 20
+  Armor: 5
+  Initiative: 80
   Skills:
   - TypeId: 1
     Kind: 1

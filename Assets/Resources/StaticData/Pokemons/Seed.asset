@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Seed
   m_EditorClassIdentifier: 
   TypeId: 13
-  Hp: 30
-  Armor: 2
-  Initiative: 50
+  Hp: 10
+  Armor: 4
+  Initiative: 20
   Skills:
   - TypeId: 1
     Kind: 1

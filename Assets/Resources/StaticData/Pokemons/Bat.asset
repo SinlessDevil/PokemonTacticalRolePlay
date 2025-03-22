@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bat
   m_EditorClassIdentifier: 
   TypeId: 1
-  Hp: 30
+  Hp: 10
   Armor: 2
   Initiative: 100
   Skills:

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Bird
   m_EditorClassIdentifier: 
   TypeId: 4
-  Hp: 30
-  Armor: 2
-  Initiative: 80
+  Hp: 15
+  Armor: 5
+  Initiative: 50
   Skills:
   - TypeId: 1
     Kind: 1

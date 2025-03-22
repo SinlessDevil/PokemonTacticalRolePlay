@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Spider
   m_EditorClassIdentifier: 
   TypeId: 16
-  Hp: 40
+  Hp: 20
   Armor: 2
   Initiative: 60
   Skills:

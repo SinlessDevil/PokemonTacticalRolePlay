@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Bee
   m_EditorClassIdentifier: 
   TypeId: 3
-  Hp: 30
+  Hp: 10
   Armor: 2
-  Initiative: 80
+  Initiative: 40
   Skills:
   - TypeId: 1
     Kind: 1

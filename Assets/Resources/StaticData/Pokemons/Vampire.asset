@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Vampire
   m_EditorClassIdentifier: 
   TypeId: 23
-  Hp: 30
+  Hp: 20
   Armor: 2
-  Initiative: 50
+  Initiative: 20
   Skills:
   - TypeId: 1
     Kind: 1

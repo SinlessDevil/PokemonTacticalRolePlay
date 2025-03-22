@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Sting
   m_EditorClassIdentifier: 
   TypeId: 12
-  Hp: 30
-  Armor: 2
-  Initiative: 100
+  Hp: 50
+  Armor: 20
+  Initiative: 50
   Skills:
   - TypeId: 1
     Kind: 1

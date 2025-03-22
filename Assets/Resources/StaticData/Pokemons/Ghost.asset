@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Ghost
   m_EditorClassIdentifier: 
   TypeId: 10
-  Hp: 30
-  Armor: 2
+  Hp: 18
+  Armor: 3
   Initiative: 100
   Skills:
   - TypeId: 1

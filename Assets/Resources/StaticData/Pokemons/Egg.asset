@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Egg
   m_EditorClassIdentifier: 
   TypeId: 6
-  Hp: 30
-  Armor: 2
-  Initiative: 80
+  Hp: 15
+  Armor: 10
+  Initiative: 25
   Skills:
   - TypeId: 1
     Kind: 1

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Toadstool
   m_EditorClassIdentifier: 
   TypeId: 22
-  Hp: 40
-  Armor: 2
-  Initiative: 60
+  Hp: 80
+  Armor: 1
+  Initiative: 20
   Skills:
   - TypeId: 1
     Kind: 1

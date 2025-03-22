@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Fledgling
   m_EditorClassIdentifier: 
   TypeId: 7
-  Hp: 30
+  Hp: 20
   Armor: 2
-  Initiative: 80
+  Initiative: 40
   Skills:
   - TypeId: 1
     Kind: 1
