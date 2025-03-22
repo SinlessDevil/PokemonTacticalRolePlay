@@ -3,10 +3,10 @@ using UnityEngine.UI;
 
 namespace CodeBase.Gameplay.UI.DebugWindow
 {
-  public class HeroActionEntry : MonoBehaviour
-  {
-    public Text HeroName;
-    public Text SkillName;
-    public Text TargetsLine;
-  }
+    public class HeroActionEntry : MonoBehaviour
+    {
+        public Text HeroName;
+        public Text SkillName;
+        public Text TargetsLine;
+    }
 }

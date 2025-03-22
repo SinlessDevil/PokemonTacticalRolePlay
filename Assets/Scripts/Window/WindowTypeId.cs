@@ -6,6 +6,7 @@
         Win = 1,
         Lose = 2,
         Bonus = 3,
-        Setting = 4
+        Setting = 4,
+        Debug = 5
     }
 }
