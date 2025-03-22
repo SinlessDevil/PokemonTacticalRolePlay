@@ -1,4 +1,4 @@
-﻿namespace CodeBase.StaticData.Heroes
+﻿namespace StaticData.Heroes
 {
     public enum HeroTypeId
     {

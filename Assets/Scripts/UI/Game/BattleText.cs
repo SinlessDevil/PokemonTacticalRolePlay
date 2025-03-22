@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace CodeBase.Gameplay.UI
+namespace UI.Game
 {
     public class BattleText : MonoBehaviour
     {

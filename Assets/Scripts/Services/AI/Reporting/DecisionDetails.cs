@@ -2,7 +2,7 @@
 
 // using CodeBase.Gameplay.AI.Utility;
 
-namespace CodeBase.Gameplay.AI.Reporting
+namespace Services.AI.Reporting
 {
     public class DecisionDetails
     {

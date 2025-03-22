@@ -1,6 +1,6 @@
-using CodeBase.StaticData.Skills;
+using StaticData.Skills;
 
-namespace CodeBase.Gameplay.Skills.SkillAppliers
+namespace Services.Skills.SkillApplier
 {
     public interface ISkillApplier
     {

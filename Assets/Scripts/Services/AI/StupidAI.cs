@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using CodeBase.Extensions;
-using CodeBase.Gameplay.Battle;
-using CodeBase.Gameplay.Heroes;
-using CodeBase.Gameplay.HeroRegistry;
-using CodeBase.Gameplay.Skills.Targeting;
-using CodeBase.StaticData.Heroes;
-using CodeBase.StaticData.Skills;
+using Extensions;
+using Logic.Heroes;
+using Services.Battle;
+using Services.HeroRegistry;
+using Services.Skills.Targeting;
 using Services.StaticData;
+using StaticData.Heroes;
+using StaticData.Skills;
 
-namespace CodeBase.Gameplay.AI
+namespace Services.AI
 {
     public class StupidAI : IArtificialIntelligence
     {

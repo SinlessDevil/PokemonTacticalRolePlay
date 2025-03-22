@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using CodeBase.StaticData.Skills;
+using StaticData.Skills;
 
-namespace CodeBase.Gameplay.Skills.Targeting
+namespace Services.Skills.Targeting
 {
     public interface ITargetPicker
     {

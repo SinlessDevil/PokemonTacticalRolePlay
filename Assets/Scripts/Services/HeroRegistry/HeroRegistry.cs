@@ -1,31 +1,31 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using CodeBase.Gameplay.Heroes;
+using Logic.Heroes;
 
-namespace CodeBase.Gameplay.HeroRegistry
+namespace Services.HeroRegistry
 {
     public class HeroRegistry : IHeroRegistry
     {
-        public List<string> FirstTeam { get; } = new();
-        public List<string> SecondTeam { get; } = new();
+        public List<string> PlayerTeam { get; } = new();
+        public List<string> EnemyTeam { get; } = new();
         public List<string> AllIds { get; private set; } = new();
 
         public Dictionary<string, HeroBehaviour> All { get; } = new();
 
-        public void RegisterFirstTeamHero(HeroBehaviour hero)
+        public void RegisterPlayerTeamHero(HeroBehaviour hero)
         {
-            if (!FirstTeam.Contains(hero.Id))
-                FirstTeam.Add(hero.Id);
+            if (!PlayerTeam.Contains(hero.Id))
+                PlayerTeam.Add(hero.Id);
 
             All[hero.Id] = hero;
 
             UpdateCashes();
         }
 
-        public void RegisterSecondTeamHero(HeroBehaviour hero)
+        public void RegisterEnemyTeamHero(HeroBehaviour hero)
         {
-            if (!SecondTeam.Contains(hero.Id))
-                SecondTeam.Add(hero.Id);
+            if (!EnemyTeam.Contains(hero.Id))
+                EnemyTeam.Add(hero.Id);
 
             All[hero.Id] = hero;
 
@@ -34,11 +34,11 @@ namespace CodeBase.Gameplay.HeroRegistry
 
         public void Unregister(string heroId)
         {
-            if (FirstTeam.Contains(heroId))
-                FirstTeam.Remove(heroId);
+            if (PlayerTeam.Contains(heroId))
+                PlayerTeam.Remove(heroId);
 
-            if (SecondTeam.Contains(heroId))
-                SecondTeam.Remove(heroId);
+            if (EnemyTeam.Contains(heroId))
+                EnemyTeam.Remove(heroId);
 
             if (All.ContainsKey(heroId))
                 All.Remove(heroId);
@@ -60,24 +60,24 @@ namespace CodeBase.Gameplay.HeroRegistry
 
         public IEnumerable<string> AlliesOf(string heroId)
         {
-            if (FirstTeam.Contains(heroId))
-                return FirstTeam;
+            if (PlayerTeam.Contains(heroId))
+                return PlayerTeam;
 
-            return SecondTeam;
+            return EnemyTeam;
         }
 
         public IEnumerable<string> EnemiesOf(string heroId)
         {
-            if (FirstTeam.Contains(heroId))
-                return SecondTeam;
+            if (PlayerTeam.Contains(heroId))
+                return EnemyTeam;
 
-            return FirstTeam;
+            return PlayerTeam;
         }
 
         public void CleanUp()
         {
-            FirstTeam.Clear();
-            SecondTeam.Clear();
+            PlayerTeam.Clear();
+            EnemyTeam.Clear();
             All.Clear();
 
             AllIds.Clear();

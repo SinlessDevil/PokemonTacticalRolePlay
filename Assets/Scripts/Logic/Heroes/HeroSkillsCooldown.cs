@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using CodeBase.Extensions;
+using Extensions;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CodeBase.Gameplay.Heroes
+namespace Logic.Heroes
 {
     public class HeroSkillsCooldown : MonoBehaviour
     {

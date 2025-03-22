@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CodeBase.Gameplay.Battle
+namespace Services.Battle
 {
     public interface IBattleConductor
     {

@@ -1,8 +1,8 @@
-﻿using CodeBase.Gameplay.Heroes;
-using CodeBase.Gameplay.HeroRegistry;
+﻿using Logic.Heroes;
+using Services.HeroRegistry;
 using UnityEngine;
 
-namespace CodeBase.Gameplay.Death
+namespace Services.Death
 {
     public class DeathService : IDeathService
     {

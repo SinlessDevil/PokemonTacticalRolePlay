@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using CodeBase.StaticData.Heroes;
-using CodeBase.StaticData.Skills;
 using StaticData;
+using StaticData.Heroes;
 using StaticData.Levels;
+using StaticData.Skills;
 using Window;
 
 namespace Services.StaticData

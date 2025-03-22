@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CodeBase.Gameplay.Heroes
+namespace Logic.Heroes
 {
     public class HeroInitiative : MonoBehaviour
     {

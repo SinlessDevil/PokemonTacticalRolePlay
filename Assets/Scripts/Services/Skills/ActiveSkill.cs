@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using CodeBase.StaticData.Skills;
+using StaticData.Skills;
 
-namespace CodeBase.Gameplay.Skills
+namespace Services.Skills
 {
     public class ActiveSkill
     {

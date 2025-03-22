@@ -1,6 +1,6 @@
-using CodeBase.Gameplay.Battle;
+using Services.Battle;
 
-namespace CodeBase.Gameplay.Skills
+namespace Services.Skills
 {
     public interface ISkillSolver
     {

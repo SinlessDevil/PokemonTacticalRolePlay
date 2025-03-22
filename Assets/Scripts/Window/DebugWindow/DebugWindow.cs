@@ -1,13 +1,13 @@
 ﻿using System.Linq;
-using CodeBase.Extensions;
-using CodeBase.Gameplay.AI.Reporting;
-using CodeBase.Gameplay.Battle;
-using CodeBase.Gameplay.HeroRegistry;
+using Extensions;
+using Services.AI.Reporting;
+using Services.Battle;
+using Services.HeroRegistry;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace CodeBase.Gameplay.UI.DebugWindow
+namespace Window.DebugWindow
 {
     public class DebugWindow : MonoBehaviour
     {

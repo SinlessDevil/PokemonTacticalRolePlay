@@ -1,12 +1,12 @@
-﻿using CodeBase.Gameplay.Heroes;
-using CodeBase.Gameplay.HeroRegistry;
-using CodeBase.Gameplay.UI;
-using CodeBase.StaticData.Heroes;
-using CodeBase.StaticData.Skills;
+﻿using Logic.Heroes;
+using Services.HeroRegistry;
 using Services.StaticData;
+using StaticData.Heroes;
+using StaticData.Skills;
+using UI.Game;
 using UnityEngine;
 
-namespace CodeBase.Gameplay.Skills.SkillAppliers
+namespace Services.Skills.SkillApplier
 {
     public class HealApplier : ISkillApplier
     {

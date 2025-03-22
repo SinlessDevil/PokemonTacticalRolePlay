@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using CodeBase.StaticData.Heroes;
-using CodeBase.StaticData.Skills;
 using Services.Factories.Paths;
 using StaticData;
+using StaticData.Heroes;
 using StaticData.Levels;
+using StaticData.Skills;
 using UnityEngine;
 using Window;
 

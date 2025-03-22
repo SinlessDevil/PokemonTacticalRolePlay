@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-// using CodeBase.Gameplay.AI.Utility;
-using CodeBase.Gameplay.Heroes;
-using CodeBase.Gameplay.HeroRegistry;
 
-namespace CodeBase.Gameplay.AI.Reporting
+namespace Services.AI.Reporting
 {
     public class AIReporter : IAIReporter
     {

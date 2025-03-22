@@ -1,11 +1,20 @@
+using CodeBase.Infrastructure;
 using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.Game;
 using Infrastructure.StateMachine.Game.States;
+using Services.AI;
+using Services.AI.Reporting;
+using Services.Battle;
+using Services.Cooldown;
+using Services.Death;
 using Services.Factories.Game;
+using Services.Factories.Hero;
 using Services.Factories.UIFactory;
 using Services.Finish;
 using Services.Finish.Lose;
 using Services.Finish.Win;
+using Services.HeroRegistry;
+using Services.Initiative;
 using Services.Input;
 using Services.Levels;
 using Services.LocalProgress;
@@ -14,9 +23,12 @@ using Services.Provides.Widgets;
 using Services.Random;
 using Services.SaveLoad;
 using Services.SFX;
+using Services.Skills;
+using Services.Skills.Targeting;
 using Services.StaticData;
 using Services.Timer;
 using Services.Window;
+using UI.Game;
 using UnityEngine;
 using Zenject;
 using Application = UnityEngine.Application;
@@ -38,6 +50,7 @@ namespace Infrastructure.Installers
             Debug.Log("Installer");
 
             BindMonoServices();
+            BindSceneLoader();
             BindServices();
             BindGameStateMachine();
             MakeInitializable();
@@ -52,27 +65,70 @@ namespace Infrastructure.Installers
             Container.Bind<ISoundService>().FromMethod(() => Container.InstantiatePrefabForComponent<ISoundService>(_soundService)).AsSingle();
             Container.Bind<IMusicService>().FromMethod(() => Container.InstantiatePrefabForComponent<IMusicService>(_musicService)).AsSingle();
             Container.Bind<ITimeService>().FromMethod(() => Container.InstantiatePrefabForComponent<ITimeService>(_timeService)).AsSingle();
-            
-            BindSceneLoader();
         }
 
         private void BindServices()
         {
             BindStaticDataService();
             
-            Container.BindInterfacesTo<UIFactory>().AsSingle();
-            Container.BindInterfacesTo<GameFactory>().AsSingle();
-            Container.BindInterfacesTo<WindowService>().AsSingle();
+            BindUIFactory();
+            BindGameFactory();
+
             Container.BindInterfacesTo<InputService>().AsSingle();
-            Container.BindInterfacesTo<PersistenceProgressService>().AsSingle();
+            
+            BindDataServices();
+
             Container.BindInterfacesTo<RandomService>().AsSingle();
-            Container.BindInterfacesTo<SaveLoadService>().AsSingle();
             Container.BindInterfacesTo<WidgetProvider>().AsSingle();
             Container.BindInterfacesTo<LevelService>().AsSingle();
+            
+            BindFinishServices();
+
+            BindBattleService();
+
+            Container.Bind<IAIReporter>().To<AIReporter>().AsSingle();
+            
+            Container.BindInterfacesTo<HeroRegistry>().AsSingle();
+            Container.BindInterfacesTo<CooldownService>().AsSingle();
+            Container.BindInterfacesTo<SkillSolver>().AsSingle();
+            
+            Container.Bind<IDeathService>().To<DeathService>().AsSingle();
+            Container.Bind<IInitiativeService>().To<InitiativeService>().AsSingle();
+            Container.Bind<ITargetPicker>().To<TargetPicker>().AsSingle();
+            Container.Bind<IArtificialIntelligence>().To<StupidAI>().AsSingle();
+        }
+
+        private void BindFinishServices()
+        {
             Container.BindInterfacesTo<FinishService>().AsSingle();
             Container.BindInterfacesTo<WinService>().AsSingle();
             Container.BindInterfacesTo<LoseService>().AsSingle();
+        }
+
+        private void BindBattleService()
+        {
+            Container.BindInterfacesTo<BattleAreaServiceInstaller>().AsSingle();
+            Container.BindInterfacesTo<BattleTextPlayer>().AsSingle();
+            Container.BindInterfacesTo<BattleConductor>().AsSingle();
+        }
+
+        private void BindDataServices()
+        {
+            Container.BindInterfacesTo<PersistenceProgressService>().AsSingle();
             Container.BindInterfacesTo<LevelLocalProgressService>().AsSingle();
+            Container.BindInterfacesTo<SaveLoadService>().AsSingle();
+        }
+
+        private void BindGameFactory()
+        {
+            Container.BindInterfacesTo<GameFactory>().AsSingle();
+            Container.Bind<IHeroFactory>().To<HeroFactory>().AsSingle();
+        }
+
+        private void BindUIFactory()
+        {
+            Container.BindInterfacesTo<UIFactory>().AsSingle();
+            Container.BindInterfacesTo<WindowService>().AsSingle();
         }
 
         private void BindGameStateMachine()

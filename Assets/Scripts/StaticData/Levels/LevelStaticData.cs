@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using StaticData.Heroes;
 using UnityEngine;
 
 namespace StaticData
@@ -9,6 +11,7 @@ namespace StaticData
         public string LevelName;
         public int LevelId;
         public LevelTypeId LevelTypeId;
+        public List<HeroTypeId> Enemies;
     }
 
     [Serializable]

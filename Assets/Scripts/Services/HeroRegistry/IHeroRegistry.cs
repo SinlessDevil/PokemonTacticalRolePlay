@@ -1,16 +1,16 @@
 using System.Collections.Generic;
-using CodeBase.Gameplay.Heroes;
+using Logic.Heroes;
 
-namespace CodeBase.Gameplay.HeroRegistry
+namespace Services.HeroRegistry
 {
     public interface IHeroRegistry
     {
-        void RegisterFirstTeamHero(HeroBehaviour hero);
-        void RegisterSecondTeamHero(HeroBehaviour hero);
+        void RegisterPlayerTeamHero(HeroBehaviour hero);
+        void RegisterEnemyTeamHero(HeroBehaviour hero);
         void CleanUp();
         void Unregister(string heroId);
-        List<string> FirstTeam { get; }
-        List<string> SecondTeam { get; }
+        List<string> PlayerTeam { get; }
+        List<string> EnemyTeam { get; }
         Dictionary<string, HeroBehaviour> All { get; }
         List<string> AllIds { get; }
         HeroBehaviour GetHero(string id);

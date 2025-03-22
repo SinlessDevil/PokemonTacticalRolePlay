@@ -1,7 +1,7 @@
-using CodeBase.Gameplay.Battle;
-using CodeBase.Gameplay.Heroes;
+using Logic.Heroes;
+using Services.Battle;
 
-namespace CodeBase.Gameplay.AI
+namespace Services.AI
 {
     public interface IArtificialIntelligence
     {

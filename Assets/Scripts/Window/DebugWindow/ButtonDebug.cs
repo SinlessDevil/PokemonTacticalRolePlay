@@ -2,10 +2,9 @@ using Services.SFX;
 using Services.Window;
 using UnityEngine;
 using UnityEngine.UI;
-using Window;
 using Zenject;
 
-namespace CodeBase.Gameplay.UI.DebugWindow
+namespace Window.DebugWindow
 {
     public class ButtonDebug : MonoBehaviour
     {

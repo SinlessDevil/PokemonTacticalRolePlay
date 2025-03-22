@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace CodeBase.Gameplay.Battle
+namespace Services.Battle
 {
     public class Slot : MonoBehaviour
     {

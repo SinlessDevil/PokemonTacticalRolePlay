@@ -1,4 +1,4 @@
-namespace CodeBase.Gameplay.Cooldowns
+namespace Services.Cooldown
 {
     public interface ICooldownService
     {

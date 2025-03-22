@@ -1,9 +1,6 @@
 using System;
-using System.Collections.Generic;
-// using CodeBase.Gameplay.AI.Utility;
-using CodeBase.Gameplay.Heroes;
 
-namespace CodeBase.Gameplay.AI.Reporting
+namespace Services.AI.Reporting
 {
     public interface IAIReporter
     {

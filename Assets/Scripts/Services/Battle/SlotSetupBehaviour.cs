@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace CodeBase.Gameplay.Battle
+namespace Services.Battle
 {
     public class SlotSetupBehaviour : MonoBehaviour
     {

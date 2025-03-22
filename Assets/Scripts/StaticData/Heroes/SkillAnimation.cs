@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace CodeBase.StaticData.Heroes
+namespace StaticData.Heroes
 {
-  [Serializable]
-  public class SkillAnimation
-  {
-    public int AnimationIndex;
-    public float Delay;
-  }
+    [Serializable]
+    public class SkillAnimation
+    {
+        public int AnimationIndex;
+        public float Delay;
+    }
 }

@@ -1,8 +1,7 @@
-﻿using CodeBase.StaticData.Heroes;
+﻿using StaticData.Heroes;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace CodeBase.Gameplay.Heroes
+namespace Logic.Heroes
 {
     public class HeroBehaviour : MonoBehaviour, IHero
     {

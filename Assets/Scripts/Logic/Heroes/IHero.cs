@@ -1,6 +1,6 @@
-using CodeBase.StaticData.Heroes;
+using StaticData.Heroes;
 
-namespace CodeBase.Gameplay.Heroes
+namespace Logic.Heroes
 {
     public interface IHero
     {

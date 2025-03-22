@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CodeBase.Gameplay.Heroes
+namespace Logic.Heroes
 {
     public class HeroState
     {

@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using CodeBase.Gameplay.AI;
-using CodeBase.Gameplay.Cooldowns;
-using CodeBase.Gameplay.Death;
-using CodeBase.Gameplay.Heroes;
-using CodeBase.Gameplay.HeroRegistry;
-using CodeBase.Gameplay.Initiative;
-using CodeBase.Gameplay.Skills;
-using CodeBase.StaticData.Skills;
+using Logic.Heroes;
+using Services.AI;
+using Services.Cooldown;
+using Services.Death;
+using Services.HeroRegistry;
+using Services.Initiative;
+using Services.Skills;
+using StaticData.Skills;
 using UnityEngine;
 using Zenject;
 
-namespace CodeBase.Gameplay.Battle
+namespace Services.Battle
 {
     public class BattleConductor : IBattleConductor, ITickable
     {
@@ -101,7 +101,7 @@ namespace CodeBase.Gameplay.Battle
 
         private void CheckBattleEnd()
         {
-            if (_heroRegistry.FirstTeam.Count == 0 || _heroRegistry.SecondTeam.Count == 0)
+            if (_heroRegistry.PlayerTeam.Count == 0 || _heroRegistry.EnemyTeam.Count == 0)
                 Finish();
         }
 

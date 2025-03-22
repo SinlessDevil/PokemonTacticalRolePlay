@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace CodeBase.Gameplay.UI.DebugWindow
+namespace Window.DebugWindow
 {
     public class HeroActionEntry : MonoBehaviour
     {

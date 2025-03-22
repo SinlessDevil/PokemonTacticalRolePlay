@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Linq;
-using CodeBase.Extensions;
-using CodeBase.Gameplay.Heroes;
-using CodeBase.StaticData.Heroes;
+using Extensions;
+using Logic.Heroes;
 using Services.StaticData;
+using StaticData.Heroes;
 using Zenject;
-using Random = UnityEngine.Random;
 
-namespace CodeBase.Gameplay.Factory
+namespace Services.Factories.Hero
 {
     public class HeroFactory : IHeroFactory
     {
@@ -33,7 +32,7 @@ namespace CodeBase.Gameplay.Factory
                     .With(x => x.MaxHp = config.Hp)
                     .With(x => x.CurrentHp = config.Hp)
                     .With(x => x.MaxInitiative = config.Initiative)
-                    .With(x => x.CurrentInitiative = Random.Range(0, config.Initiative))
+                    .With(x => x.CurrentInitiative = UnityEngine.Random.Range(0, config.Initiative))
                     .With(x => x.Armor = config.Armor)
                     .With(x => x.SkillStates = config.Skills.Select(SkillState.FromHeroSkill).ToList()),
                 turned,

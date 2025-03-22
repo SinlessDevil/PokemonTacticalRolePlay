@@ -1,4 +1,4 @@
-namespace CodeBase.Gameplay.Initiative
+namespace Services.Initiative
 {
     public interface IInitiativeService
     {

@@ -1,7 +1,7 @@
-﻿using CodeBase.Gameplay.Heroes;
-using CodeBase.Gameplay.HeroRegistry;
+﻿using Logic.Heroes;
+using Services.HeroRegistry;
 
-namespace CodeBase.Gameplay.Initiative
+namespace Services.Initiative
 {
     public class InitiativeService : IInitiativeService
     {

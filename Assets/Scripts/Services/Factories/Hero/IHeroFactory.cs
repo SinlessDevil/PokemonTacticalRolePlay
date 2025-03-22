@@ -1,8 +1,8 @@
-using CodeBase.Gameplay.Battle;
-using CodeBase.Gameplay.Heroes;
-using CodeBase.StaticData.Heroes;
+using Logic.Heroes;
+using Services.Battle;
+using StaticData.Heroes;
 
-namespace CodeBase.Gameplay.Factory
+namespace Services.Factories.Hero
 {
     public interface IHeroFactory
     {

@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
-using CodeBase.Gameplay.Battle;
-using CodeBase.Gameplay.Heroes;
-using CodeBase.Gameplay.HeroRegistry;
-using CodeBase.Gameplay.Skills.SkillAppliers;
-using CodeBase.Gameplay.UI;
-using CodeBase.StaticData.Heroes;
-using CodeBase.StaticData.Skills;
+using Logic.Heroes;
+using Services.Battle;
+using Services.HeroRegistry;
+using Services.Skills.SkillApplier;
 using Services.StaticData;
+using StaticData.Heroes;
+using StaticData.Skills;
+using UI.Game;
 using UnityEngine;
 using Zenject;
 
-namespace CodeBase.Gameplay.Skills
+namespace Services.Skills
 {
     public class SkillSolver : ISkillSolver, IInitializable
     {

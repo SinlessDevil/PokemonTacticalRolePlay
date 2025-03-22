@@ -1,4 +1,4 @@
-namespace CodeBase.Gameplay.Death
+namespace Services.Death
 {
     public interface IDeathService
     {

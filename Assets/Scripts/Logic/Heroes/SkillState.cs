@@ -1,9 +1,9 @@
-﻿using CodeBase.Extensions;
-using CodeBase.StaticData.Heroes;
-using CodeBase.StaticData.Skills;
+﻿using Extensions;
+using StaticData.Heroes;
+using StaticData.Skills;
 using UnityEngine;
 
-namespace CodeBase.Gameplay.Heroes
+namespace Logic.Heroes
 {
     public class SkillState
     {

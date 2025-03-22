@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
-namespace CodeBase.Gameplay.UI
+namespace UI.Game
 {
     public class BattleTextPlayer : IBattleTextPlayer, IInitializable
     {

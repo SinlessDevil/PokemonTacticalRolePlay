@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using CodeBase.Gameplay.Heroes;
-using CodeBase.StaticData.Skills;
+using Logic.Heroes;
+using StaticData.Skills;
 
-namespace CodeBase.Gameplay.Battle
+namespace Services.Battle
 {
     public class HeroAction
     {

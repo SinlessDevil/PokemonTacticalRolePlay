@@ -1,10 +1,9 @@
-﻿using System;
-using CodeBase.Gameplay.Battle;
+﻿using Services.Battle;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace CodeBase.Gameplay.UI
+namespace UI.Game
 {
     public class NextHeroTurnButton : MonoBehaviour
     {

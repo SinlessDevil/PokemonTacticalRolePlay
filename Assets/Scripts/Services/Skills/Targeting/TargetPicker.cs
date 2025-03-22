@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using CodeBase.Gameplay.HeroRegistry;
-using CodeBase.StaticData.Skills;
+using Services.HeroRegistry;
+using StaticData.Skills;
 
-namespace CodeBase.Gameplay.Skills.Targeting
+namespace Services.Skills.Targeting
 {
     public class TargetPicker : ITargetPicker
     {

@@ -1,8 +1,7 @@
-﻿using System;
-using CodeBase.Extensions;
+﻿using Extensions;
 using UnityEngine;
 
-namespace CodeBase.Gameplay.Heroes
+namespace Logic.Heroes
 {
     public class HeroAnimator : MonoBehaviour
     {

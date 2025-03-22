@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace CodeBase.Gameplay.UI
+namespace UI.Game
 {
     public interface IBattleTextPlayer
     {
