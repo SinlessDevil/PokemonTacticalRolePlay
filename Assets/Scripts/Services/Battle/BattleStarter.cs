@@ -12,6 +12,8 @@ namespace Services.Battle
 {
     public class BattleStarter : IBattleStarter
     {
+        private const int MaxHeroesCount = 3;
+        
         private readonly IHeroFactory _heroFactory;
         private readonly IHeroRegistry _heroRegistry;
         private readonly IBattleConductor _battleConductor;
@@ -31,6 +33,8 @@ namespace Services.Battle
             _battleConductor = battleConductor;
             _levelService = levelService;
         }
+
+        public int GetMaxHeroesCount => MaxHeroesCount;
 
         public void SetUpSlotSetup(SlotSetupBehaviour slotSetup)
         {

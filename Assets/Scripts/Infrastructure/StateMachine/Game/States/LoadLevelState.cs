@@ -5,10 +5,10 @@ namespace Infrastructure.StateMachine.Game.States
 {
     public class LoadLevelState : IPayloadedState<string>, IGameState
     {
+        private readonly IStateMachine<IGameState> _gameStateMachine;
         private readonly ISceneLoader _sceneLoader;
         private readonly ILoadingCurtain _loadingCurtain;
         private readonly IUIFactory _uiFactory;
-        private readonly IStateMachine<IGameState> _gameStateMachine;
         private readonly IWidgetProvider _widgetProvider;
 
         public LoadLevelState(

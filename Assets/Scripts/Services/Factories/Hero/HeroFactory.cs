@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Linq;
-using Extensions;
-using Logic.Heroes;
+using Services.Battle;
 using Services.StaticData;
 using StaticData.Heroes;
+using UnityEngine;
+using Extensions;
+using Logic.Heroes;
 using Zenject;
 
 namespace Services.Factories.Hero
@@ -19,7 +21,7 @@ namespace Services.Factories.Hero
             _staticDataService = staticDataService;
         }
 
-        public HeroBehaviour CreateHeroAt(HeroTypeId heroTypeId, Battle.Slot slot, bool turned)
+        public HeroBehaviour CreateHeroAt(HeroTypeId heroTypeId, Slot slot, bool turned)
         {
             HeroConfig config = _staticDataService.HeroConfigFor(heroTypeId);
             HeroBehaviour hero = _instantiator
@@ -39,6 +41,9 @@ namespace Services.Factories.Hero
                 slot.SlotNumber
             );
 
+            hero.transform.rotation = Quaternion.Euler(slot.transform.rotation.eulerAngles.x, 
+                slot.transform.rotation.eulerAngles.y, slot.transform.rotation.eulerAngles.z);
+            
             return hero;
         }
     }

@@ -4,6 +4,7 @@ namespace Services.Battle
 {
     public interface IBattleStarter
     {
+        int GetMaxHeroesCount { get; }
         void SetUpSlotSetup(SlotSetupBehaviour slotSetup);
         void StartRandomBattle();
         void Clear();

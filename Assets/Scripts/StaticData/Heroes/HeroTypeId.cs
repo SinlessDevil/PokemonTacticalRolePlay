@@ -26,6 +26,5 @@
         Sting = 21,
         Toadstool = 22,
         Vampire = 23,
-        StingLord = 24,
     }
 }
