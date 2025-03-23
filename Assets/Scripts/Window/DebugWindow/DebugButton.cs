@@ -31,7 +31,7 @@ namespace Window.DebugWindow
         {
             _soundService.ButtonClick();
 
-            if(_debugWindow == null)
+            if(_debugWindow != null)
                 return;
             
             var prefab = _windowService.Open(WindowTypeId.Debug);
