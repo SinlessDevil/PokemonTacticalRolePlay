@@ -44,7 +44,7 @@ namespace Services.Factories.UIFactory
 
         public RectTransform CreateRectTransform(RectTransform parent, string path)
         {
-            GameObject rectTransform = Instantiate(path, parent);
+            GameObject rectTransform = Instantiate(path, parent,true);
             return rectTransform.GetComponent<RectTransform>();
         }
 

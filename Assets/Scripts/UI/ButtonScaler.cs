@@ -23,8 +23,10 @@ namespace UI.Buttons
             _soundService = soundService;
         }
     
-        private void Start() => _originalScale = _image.transform.localScale;
+        private void Start() => Reset();
 
+        public void Reset() => _originalScale = Vector3.one;
+        
         public void OnPointerDown(PointerEventData eventData)
         {
             StopAllCoroutines();

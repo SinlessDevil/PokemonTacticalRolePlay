@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Services.Battle;
 using Services.Factories.UIFactory;
 using Services.HeroRegistry;
@@ -8,6 +9,7 @@ using Services.Provides.Widgets;
 using Services.Timer;
 using Services.Window;
 using UI.Game;
+using UnityEngine;
 using Window;
 using Window.HeroSetUpWindow;
 
@@ -25,6 +27,7 @@ namespace Infrastructure.StateMachine.Game.States
         private readonly IBattleTextPlayer _battleTextPlayer;
         private readonly IHeroRegistry _heroRegistry;
         private readonly IBattleStarter _battleStarter;
+        private readonly ILoadingCurtain _loadingCurtain;
 
         public GameLoopState(
             IInputService inputService,
@@ -36,7 +39,8 @@ namespace Infrastructure.StateMachine.Game.States
             IUIFactory uiFactory,
             IBattleTextPlayer battleTextPlayer,
             IHeroRegistry heroRegistry,
-            IBattleStarter battleStarter)
+            IBattleStarter battleStarter,
+            ILoadingCurtain loadingCurtain)
         {
             _inputService = inputService;
             _widgetProvider = widgetProvider;
@@ -48,24 +52,33 @@ namespace Infrastructure.StateMachine.Game.States
             _battleTextPlayer = battleTextPlayer;
             _heroRegistry = heroRegistry;
             _battleStarter = battleStarter;
+            _loadingCurtain = loadingCurtain;
         }
 
         public void Enter()
         {
-            var slotSetupBehavior = UnityEngine.Object.FindObjectOfType<SlotSetupBehaviour>();
+            var slotSetupBehavior = Object.FindObjectOfType<SlotSetupBehaviour>();
             _battleStarter.SetUpSlotSetup(slotSetupBehavior);
             
             _battleTextPlayer.SetRoot(_uiFactory.UIRoot);
+            
+            WaitLoadingToShowHeroSetUpWindow().Forget();
+        }
 
+        private async UniTask WaitLoadingToShowHeroSetUpWindow()
+        {
+            await UniTask.WaitUntil(() => _loadingCurtain.IsActive == false);
+            
             var heroSetUpWindow = _windowService
                 .Open(WindowTypeId.HeroSetUpWindow)
                 .GetComponent<HeroSetUpWindow>();
 
             heroSetUpWindow.Initialize();
         }
-
+        
         public void Update()
         {
+            
         }
 
         public void Exit()
