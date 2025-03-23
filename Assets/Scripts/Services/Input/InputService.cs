@@ -44,7 +44,7 @@ namespace Services.Input
             }
         }
 
-        public void Cleanup()
+        public void CleanUp()
         {
             SetInputDevice(new NullableInputDevice());
         }

@@ -6,7 +6,6 @@ using Services.Factories.Hero;
 using Services.HeroRegistry;
 using Services.Levels;
 using StaticData.Heroes;
-using Random = UnityEngine.Random;
 
 namespace Services.Battle
 {
@@ -49,7 +48,7 @@ namespace Services.Battle
             _battleConductor.Start();
         }
 
-        public void Clear()
+        public void CleanUp()
         {
             _playerHeroTypeIds.Clear();
             _slotSetup = null;

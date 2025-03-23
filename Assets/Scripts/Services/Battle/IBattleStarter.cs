@@ -7,7 +7,7 @@ namespace Services.Battle
         int GetMaxHeroesCount { get; }
         void SetUpSlotSetup(SlotSetupBehaviour slotSetup);
         void StartRandomBattle();
-        void Clear();
+        void CleanUp();
         HeroTypeId RandomHeroTypeId();
     }
 }

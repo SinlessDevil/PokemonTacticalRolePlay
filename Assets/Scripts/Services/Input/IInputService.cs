@@ -16,6 +16,6 @@ namespace Services.Input
         Vector3 TouchPosition { get; }
 
         void SetInputDevice(IInputDevice inputDevice);
-        void Cleanup();
+        void CleanUp();
     }   
 }

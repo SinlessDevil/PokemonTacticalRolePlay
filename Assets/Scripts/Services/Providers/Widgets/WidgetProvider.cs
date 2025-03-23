@@ -30,7 +30,7 @@ namespace Services.Provides.Widgets
             }
         }
         
-        public void CleanupPool()
+        public void CleanUpPool()
         {
             foreach (var ball in _pool.Where(ball => ball != null))
             {

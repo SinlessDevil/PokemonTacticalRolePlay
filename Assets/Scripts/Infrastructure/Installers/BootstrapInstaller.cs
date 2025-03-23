@@ -1,4 +1,3 @@
-using CodeBase.Infrastructure;
 using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.Game;
 using Infrastructure.StateMachine.Game.States;
@@ -108,7 +107,6 @@ namespace Infrastructure.Installers
 
         private void BindBattleService()
         {
-            Container.BindInterfacesTo<BattleAreaServiceInstaller>().AsSingle();
             Container.BindInterfacesTo<BattleTextPlayer>().AsSingle();
             Container.BindInterfacesTo<BattleConductor>().AsSingle();
             Container.Bind<IBattleStarter>().To<BattleStarter>().AsSingle();

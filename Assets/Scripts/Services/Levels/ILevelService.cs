@@ -14,7 +14,7 @@ namespace Services.Levels
         public int GetCurrentChapterIndex();
         public void SetUpCurrentLevel(int levelNumber, int chapterId);
         public void LevelsComplete();
-        public void Cleanup();
+        public void CleanUp();
         List<ChapterStaticData> GetAllChapters();
         bool IsLevelCompleted(int chapterId, int levelId);
         bool IsLevelCurrent(int chapterId, int levelId);

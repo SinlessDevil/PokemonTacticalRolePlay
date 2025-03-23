@@ -1,3 +1,4 @@
+using Services.Battle;
 using Services.Factories.UIFactory;
 using Services.HeroRegistry;
 using Services.Input;
@@ -23,6 +24,7 @@ namespace Infrastructure.StateMachine.Game.States
         private readonly IUIFactory _uiFactory;
         private readonly IBattleTextPlayer _battleTextPlayer;
         private readonly IHeroRegistry _heroRegistry;
+        private readonly IBattleStarter _battleStarter;
 
         public GameLoopState(
             IInputService inputService,
@@ -33,7 +35,8 @@ namespace Infrastructure.StateMachine.Game.States
             IWindowService windowService,
             IUIFactory uiFactory,
             IBattleTextPlayer battleTextPlayer,
-            IHeroRegistry heroRegistry)
+            IHeroRegistry heroRegistry,
+            IBattleStarter battleStarter)
         {
             _inputService = inputService;
             _widgetProvider = widgetProvider;
@@ -44,33 +47,37 @@ namespace Infrastructure.StateMachine.Game.States
             _uiFactory = uiFactory;
             _battleTextPlayer = battleTextPlayer;
             _heroRegistry = heroRegistry;
+            _battleStarter = battleStarter;
         }
-        
+
         public void Enter()
         {
-            _battleTextPlayer.SetRoot(_uiFactory.UIRoot);
+            var slotSetupBehavior = UnityEngine.Object.FindObjectOfType<SlotSetupBehaviour>();
+            _battleStarter.SetUpSlotSetup(slotSetupBehavior);
             
+            _battleTextPlayer.SetRoot(_uiFactory.UIRoot);
+
             var heroSetUpWindow = _windowService
                 .Open(WindowTypeId.HeroSetUpWindow)
                 .GetComponent<HeroSetUpWindow>();
-            
+
             heroSetUpWindow.Initialize();
         }
 
         public void Update()
         {
-            
         }
 
         public void Exit()
         {
+            _battleStarter.CleanUp();
             _heroRegistry.CleanUp();
-            
-            _inputService.Cleanup();
-            _widgetProvider.CleanupPool();
-            _levelService.Cleanup();
-            _levelLocalProgressService.Cleanup();
-            
+
+            _inputService.CleanUp();
+            _widgetProvider.CleanUpPool();
+            _levelService.CleanUp();
+            _levelLocalProgressService.CleanUp();
+
             _timeService.ResetTimer();
         }
     }

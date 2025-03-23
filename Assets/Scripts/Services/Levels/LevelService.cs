@@ -61,7 +61,7 @@ namespace Services.Levels
             _persistenceProgressService.PlayerData.PlayerLevelData.CurrentProgress.ChapterId = chapterId;
         }
 
-        public void Cleanup()
+        public void CleanUp()
         {
             
         }

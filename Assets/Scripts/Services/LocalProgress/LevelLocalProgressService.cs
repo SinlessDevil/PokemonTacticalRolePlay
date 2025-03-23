@@ -14,7 +14,7 @@ namespace Services.LocalProgress
             UpdateScoreEvent?.Invoke(Score);
         }
         
-        public void Cleanup()
+        public void CleanUp()
         {
             Score = 0;
         }
