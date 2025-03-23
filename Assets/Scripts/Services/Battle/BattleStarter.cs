@@ -69,9 +69,15 @@ namespace Services.Battle
                 throw new InvalidOperationException("All available heroes have already been selected.");
 
             HeroTypeId selectedHero = availableTypeIds[UnityEngine.Random.Range(0, availableTypeIds.Count)];
-            _playerHeroTypeIds.Add(selectedHero);
-
             return selectedHero;
+        }
+        
+        public void AddPlayerHero(HeroTypeId heroTypeId)
+        {
+            if (_playerHeroTypeIds.Count >= MaxHeroesCount)
+                throw new InvalidOperationException("Player team is already full.");
+
+            _playerHeroTypeIds.Add(heroTypeId);
         }
         
         private void SetupPlayerTeam(SlotSetupBehaviour slotSetup)

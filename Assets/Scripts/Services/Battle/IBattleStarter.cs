@@ -9,5 +9,6 @@ namespace Services.Battle
         void StartRandomBattle();
         void CleanUp();
         HeroTypeId RandomHeroTypeId();
+        void AddPlayerHero(HeroTypeId heroTypeId);
     }
 }

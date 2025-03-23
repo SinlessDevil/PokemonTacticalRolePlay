@@ -35,6 +35,8 @@ namespace Window.HeroSetUpWindow
         }
 
         public event Action<HeroCard> SelectedHeroCard;
+
+        public HeroTypeId HeroTypeId => _heroTypeId;
         
         public void Initialize(HeroTypeId heroTypeId)
         {

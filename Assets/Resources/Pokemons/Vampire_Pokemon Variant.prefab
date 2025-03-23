@@ -131,6 +131,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2165052102505961260, guid: ff5e4dca40a2fcf41911ecef6877331b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2381904529349989630, guid: ff5e4dca40a2fcf41911ecef6877331b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0.92834
+      objectReference: {fileID: 0}
+    - target: {fileID: 2381904529349989630, guid: ff5e4dca40a2fcf41911ecef6877331b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0.9283
+      objectReference: {fileID: 0}
+    - target: {fileID: 2381904529349989630, guid: ff5e4dca40a2fcf41911ecef6877331b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.0047251
+      objectReference: {fileID: 0}
+    - target: {fileID: 2381904529349989630, guid: ff5e4dca40a2fcf41911ecef6877331b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.98595
+      objectReference: {fileID: 0}
     - target: {fileID: 4960810405049884631, guid: ff5e4dca40a2fcf41911ecef6877331b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 2.29
@@ -153,10 +173,40 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1554334704046476890, guid: ff5e4dca40a2fcf41911ecef6877331b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3485778241302618766}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2165052102505961260, guid: ff5e4dca40a2fcf41911ecef6877331b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2628911084295146385}
   m_SourcePrefab: {fileID: 100100000, guid: ff5e4dca40a2fcf41911ecef6877331b, type: 3}
 --- !u!4 &7155356712808605788 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1554334704046476890, guid: ff5e4dca40a2fcf41911ecef6877331b, type: 3}
   m_PrefabInstance: {fileID: 8565551996573672966}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7554009104889278762 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2165052102505961260, guid: ff5e4dca40a2fcf41911ecef6877331b, type: 3}
+  m_PrefabInstance: {fileID: 8565551996573672966}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2628911084295146385
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7554009104889278762}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a9cc5f77b47f4164bb2e187c95918647, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

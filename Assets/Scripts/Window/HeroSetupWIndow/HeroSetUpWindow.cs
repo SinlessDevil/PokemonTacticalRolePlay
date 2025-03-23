@@ -98,6 +98,8 @@ namespace Window.HeroSetUpWindow
         
         private async UniTask OnSelectedHeroCardAsync(HeroCard selected)
         {
+            _battleStarter.AddPlayerHero(selected.HeroTypeId);
+            
             _heroCardsChoice.ForEach(x => x.Interactive(false));
             selected.transform.SetParent(this.transform);
             _heroCardsChoice.Remove(selected);
