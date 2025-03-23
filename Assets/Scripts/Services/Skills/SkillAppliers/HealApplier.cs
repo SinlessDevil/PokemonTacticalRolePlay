@@ -56,6 +56,6 @@ namespace Services.Skills.SkillApplier
         }
 
         private void PlayFx(Vector3 targetPosition) =>
-            Object.Instantiate(_fXPrefab, targetPosition, Quaternion.identity);
+            Object.Instantiate(_fXPrefab, targetPosition + Vector3.up * 2f, Quaternion.identity);
     }
 }

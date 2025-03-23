@@ -53,7 +53,7 @@ namespace Services.Skills.SkillApplier
         private void PlayFx(GameObject fxPrefab, Vector3 position)
         {
             if (fxPrefab)
-                Object.Instantiate(fxPrefab, position, Quaternion.identity);
+                Object.Instantiate(fxPrefab, position + Vector3.up * 2f, Quaternion.identity);
         }
     }
 }
