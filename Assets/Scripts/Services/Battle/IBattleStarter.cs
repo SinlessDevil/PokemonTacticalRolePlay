@@ -4,7 +4,8 @@ namespace Services.Battle
 {
     public interface IBattleStarter
     {
-        void StartRandomBattle(SlotSetupBehaviour slotSetup);
+        void SetUpSlotSetup(SlotSetupBehaviour slotSetup);
+        void StartRandomBattle();
         void Clear();
         HeroTypeId RandomHeroTypeId();
     }

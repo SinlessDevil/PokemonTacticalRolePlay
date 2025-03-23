@@ -50,5 +50,6 @@ MonoBehaviour:
       AnimationIndex: 2
       Delay: 1
     CustomTargetFx: {fileID: 87106950742767038, guid: bbdd7551db5634b4ab0a2104e83aec00, type: 3}
-  bgSprite: {fileID: 21300000, guid: 6269e95fbaa594f67a3f90a6d8624ca9, type: 3}
+  IconImage: {fileID: 21300000, guid: 04583f52f968a1a418f9079810eae7dd, type: 3}
+  BgSprite: {fileID: 21300000, guid: 6269e95fbaa594f67a3f90a6d8624ca9, type: 3}
   Prefab: {fileID: 7839633962325119934, guid: a59349f72ea9fa34e92c3c0d842784b0, type: 3}

@@ -9,6 +9,7 @@ using Services.Cooldown;
 using Services.Death;
 using Services.Factories.Game;
 using Services.Factories.Hero;
+using Services.Factories.HeroSetup;
 using Services.Factories.UIFactory;
 using Services.Finish;
 using Services.Finish.Lose;
@@ -110,6 +111,7 @@ namespace Infrastructure.Installers
             Container.BindInterfacesTo<BattleAreaServiceInstaller>().AsSingle();
             Container.BindInterfacesTo<BattleTextPlayer>().AsSingle();
             Container.BindInterfacesTo<BattleConductor>().AsSingle();
+            Container.Bind<IBattleStarter>().To<BattleStarter>().AsSingle();
         }
 
         private void BindDataServices()
@@ -129,6 +131,7 @@ namespace Infrastructure.Installers
         {
             Container.BindInterfacesTo<UIFactory>().AsSingle();
             Container.BindInterfacesTo<WindowService>().AsSingle();
+            Container.BindInterfacesTo<HeroSetUpFactory>().AsSingle();
         }
 
         private void BindGameStateMachine()

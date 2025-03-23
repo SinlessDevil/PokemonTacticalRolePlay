@@ -41,6 +41,12 @@ namespace Services.Factories.UIFactory
             return window.GetComponent<RectTransform>();
         }
 
+        public RectTransform CreateRectTransform(RectTransform parent, string path)
+        {
+            GameObject rectTransform = Instantiate(path, parent);
+            return rectTransform.GetComponent<RectTransform>();
+        }
+
         public GameHud CreateGameHud()
         {
             return GameHud = Instantiate(ResourcePath.GameHudPath).GetComponent<GameHud>();

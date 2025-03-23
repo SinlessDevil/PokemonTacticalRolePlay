@@ -14,6 +14,7 @@ namespace Services.Factories.UIFactory
 
         public void CreateUiRoot();
         public RectTransform CrateWindow(WindowTypeId windowTypeId);
+        public RectTransform CreateRectTransform(RectTransform parent, string path);
         public GameHud CreateGameHud();
         public MenuHud CreateMenuHud();
         public Widget CreateWidget(Vector3 position, Quaternion rotation);

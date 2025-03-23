@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace StaticData.Heroes
 {
@@ -13,7 +14,8 @@ namespace StaticData.Heroes
 
         public List<HeroSkill> Skills;
 
-        public Sprite bgSprite;
+        public Sprite IconImage;
+        [FormerlySerializedAs("bgSprite")] public Sprite BgSprite;
         public GameObject Prefab;
     }
 }

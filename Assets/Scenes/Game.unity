@@ -453,7 +453,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotSetup: {fileID: 353650358}
-  TextRoot: {fileID: 0}
 --- !u!1 &669669498
 GameObject:
   m_ObjectHideFlags: 0

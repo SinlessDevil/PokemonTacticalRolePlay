@@ -18,6 +18,7 @@ namespace Services.Battle
         private readonly ILevelService _levelService;
 
         private List<HeroTypeId> _playerHeroTypeIds = new();
+        private SlotSetupBehaviour _slotSetup;
         
         public BattleStarter(
             IHeroFactory heroFactory, 
@@ -31,10 +32,15 @@ namespace Services.Battle
             _levelService = levelService;
         }
 
-        public void StartRandomBattle(SlotSetupBehaviour slotSetup)
+        public void SetUpSlotSetup(SlotSetupBehaviour slotSetup)
         {
-            SetupPlayerTeam(slotSetup);
-            SetupEnemyTeam(slotSetup);
+            _slotSetup = slotSetup;
+        }
+
+        public void StartRandomBattle()
+        {
+            SetupPlayerTeam(_slotSetup);
+            SetupEnemyTeam(_slotSetup);
 
             _battleConductor.Start();
         }
@@ -42,6 +48,7 @@ namespace Services.Battle
         public void Clear()
         {
             _playerHeroTypeIds.Clear();
+            _slotSetup = null;
         }
         
         public HeroTypeId RandomHeroTypeId()
