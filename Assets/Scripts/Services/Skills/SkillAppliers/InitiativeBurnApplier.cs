@@ -10,13 +10,9 @@ namespace Services.Skills.SkillApplier
 {
     public class InitiativeBurnApplier : ISkillApplier
     {
-        private const string FXPrefabPath = "Fx/energyBall/energyBalls";
-
         private readonly IStaticDataService _staticDataService;
         private readonly IHeroRegistry _heroRegistry;
         private readonly IBattleTextPlayer _battleTextPlayer;
-        
-        private GameObject _fXPrefab;
 
         public SkillKind SkillKind => SkillKind.InitiativeBurn;
 
@@ -48,16 +44,18 @@ namespace Services.Skills.SkillApplier
                     target.State.CurrentInitiative = 0;
 
                 _battleTextPlayer.PlayText($"-{burnt}", new Color(0.7f, 0.4f, 0.2f, 1f), target.transform.position);
-                PlayFx(target.transform.position);
+                PlayFx(skill.CustomTargetFx, target.transform.position);
             }
         }
 
         public void WarmUp()
         {
-            _fXPrefab = Resources.Load<GameObject>(FXPrefabPath);
         }
 
-        private void PlayFx(Vector3 targetPosition) =>
-            Object.Instantiate(_fXPrefab, targetPosition + Vector3.up * 2f, Quaternion.identity);
+        private void PlayFx(GameObject fxPrefab, Vector3 position)
+        {
+            if (fxPrefab)
+                Object.Instantiate(fxPrefab, position + Vector3.up * 1.5f, Quaternion.identity);
+        }  
     }
 }

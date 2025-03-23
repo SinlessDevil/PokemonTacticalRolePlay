@@ -10,8 +10,6 @@ namespace Services.Skills.SkillApplier
 {
     public class HealApplier : ISkillApplier
     {
-        private const string FXPrefabPath = "Fx/heal/healFx";
-
         private readonly IStaticDataService _staticDataService;
         private readonly IHeroRegistry _heroRegistry;
         private readonly IBattleTextPlayer _battleTextPlayer;
@@ -46,16 +44,19 @@ namespace Services.Skills.SkillApplier
                 target.State.CurrentHp += healed;
 
                 _battleTextPlayer.PlayText($"+{healed}", Color.green, target.transform.position);
-                PlayFx(target.transform.position);
+                PlayFx(skill.CustomTargetFx, target.transform.position);
             }
         }
 
         public void WarmUp()
         {
-            _fXPrefab = Resources.Load<GameObject>(FXPrefabPath);
+            
         }
 
-        private void PlayFx(Vector3 targetPosition) =>
-            Object.Instantiate(_fXPrefab, targetPosition + Vector3.up * 2f, Quaternion.identity);
+        private void PlayFx(GameObject fxPrefab, Vector3 position)
+        {
+            if (fxPrefab)
+                Object.Instantiate(fxPrefab, position + Vector3.up * 1.5f, Quaternion.identity);
+        }
     }
 }

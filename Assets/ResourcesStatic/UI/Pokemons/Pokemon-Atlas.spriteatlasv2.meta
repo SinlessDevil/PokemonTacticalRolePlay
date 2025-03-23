@@ -20,8 +20,8 @@ SpriteAtlasImporter:
     blockOffset: 1
     allowAlphaSplitting: 0
     enableRotation: 0
-    enableTightPacking: 1
-    enableAlphaDilation: 0
+    enableTightPacking: 0
+    enableAlphaDilation: 1
   secondaryTextureSettings: {}
   variantMultiplier: 1
   bindAsDefault: 1
