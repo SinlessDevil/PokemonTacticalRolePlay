@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Window.DebugWindow
 {
-    public class ButtonDebug : MonoBehaviour
+    public class DebugButton : MonoBehaviour
     {
         [SerializeField] private Button _button;
         
@@ -34,7 +34,7 @@ namespace Window.DebugWindow
             if(_debugWindow == null)
                 return;
             
-            var prefab = _windowService.Open(WindowTypeId.Setting);
+            var prefab = _windowService.Open(WindowTypeId.Debug);
             _debugWindow = prefab.GetComponent<DebugWindow>();
             _debugWindow.Initialize();
         }

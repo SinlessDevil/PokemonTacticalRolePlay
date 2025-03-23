@@ -28,6 +28,7 @@ namespace Services.Factories.UIFactory
 
         public GameHud GameHud { get; private set; }
         public MenuHud MenuHud { get; private set; }
+        public Transform UIRoot => _uiRoot;
 
         public void CreateUiRoot()
         {

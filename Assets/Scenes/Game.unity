@@ -274,7 +274,7 @@ PrefabInstance:
     - target: {fileID: 4991514686098285369, guid: 1e0d30a55ee611440b6255ff8e4e102e, type: 3}
       propertyPath: '_monoInstallers.Array.data[0]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 353650359}
     - target: {fileID: 5032882099557111006, guid: 1e0d30a55ee611440b6255ff8e4e102e, type: 3}
       propertyPath: arrowLength
       value: 3

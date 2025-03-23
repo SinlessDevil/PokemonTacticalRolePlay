@@ -754,6 +754,7 @@ GameObject:
   - component: {fileID: 4998047137376818797}
   - component: {fileID: 3077587361814248850}
   - component: {fileID: 3701538286218187093}
+  - component: {fileID: 8451995549541318424}
   m_Layer: 5
   m_Name: Manual_Button
   m_TagString: Untagged
@@ -876,6 +877,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Button: {fileID: 3077587361814248850}
+--- !u!114 &8451995549541318424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3160669972240572746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d67a88276d0af46ad591b6491e0e41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _image: {fileID: 4998047137376818797}
+  ScaleAmount: 0.8
+  ScaleDuration: 0.2
 --- !u!1 &3498969257133453453
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,6 +970,7 @@ GameObject:
   - component: {fileID: 2200943480031141905}
   - component: {fileID: 5975277399163122174}
   - component: {fileID: 842320971874811048}
+  - component: {fileID: 8317420515851875708}
   m_Layer: 5
   m_Name: Auto_Button
   m_TagString: Untagged
@@ -1076,6 +1093,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Button: {fileID: 5975277399163122174}
+--- !u!114 &8317420515851875708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4230175377126691761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d67a88276d0af46ad591b6491e0e41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _image: {fileID: 2200943480031141905}
+  ScaleAmount: 0.8
+  ScaleDuration: 0.2
 --- !u!1 &5264830760310888596
 GameObject:
   m_ObjectHideFlags: 0
@@ -1163,6 +1195,8 @@ GameObject:
   - component: {fileID: 806073522756892309}
   - component: {fileID: 352150429298971910}
   - component: {fileID: 7780094060924371111}
+  - component: {fileID: 4599804251731808337}
+  - component: {fileID: 8838067896693338058}
   m_Layer: 5
   m_Name: Debug_Button
   m_TagString: Untagged
@@ -1272,6 +1306,34 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4599804251731808337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5371837082389629746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb3dd927b114e474ebf6f5e8345920e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 7780094060924371111}
+--- !u!114 &8838067896693338058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5371837082389629746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d67a88276d0af46ad591b6491e0e41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _image: {fileID: 352150429298971910}
+  ScaleAmount: 0.8
+  ScaleDuration: 0.2
 --- !u!1 &5900182609182095567
 GameObject:
   m_ObjectHideFlags: 0
@@ -1662,6 +1724,7 @@ GameObject:
   - component: {fileID: 7039471834107962751}
   - component: {fileID: 1183158225162008038}
   - component: {fileID: 4513465458943858982}
+  - component: {fileID: 7187794326340262410}
   m_Layer: 5
   m_Name: Next_Button
   m_TagString: Untagged
@@ -1784,6 +1847,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Button: {fileID: 1183158225162008038}
+--- !u!114 &7187794326340262410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8664224884966767253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d67a88276d0af46ad591b6491e0e41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _image: {fileID: 7039471834107962751}
+  ScaleAmount: 0.8
+  ScaleDuration: 0.2
 --- !u!1 &8669084356209826208
 GameObject:
   m_ObjectHideFlags: 0

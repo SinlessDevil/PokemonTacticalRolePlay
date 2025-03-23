@@ -34,8 +34,6 @@ namespace Window.HeroSetUpWindow
 
         public event Action<HeroCard> SelectedHeroCard;
         
-        public HeroTypeId HeroTypeId => _heroTypeId;
-        
         public void Initialize(HeroTypeId heroTypeId)
         {
             _heroTypeId = heroTypeId;
@@ -45,21 +43,20 @@ namespace Window.HeroSetUpWindow
             SetInfo();
         }
 
-        public void PlayAnimationHide(Action callback = null)
+        public Tween PlayAnimationHide()
         {
-            transform.DOScale(0f, 0.35f)
-                .SetEase(Ease.OutElastic)
-                .OnComplete(() =>
-                {
-                    callback?.Invoke();
-                });
+            return transform.DOScale(0f, 0.35f)
+                .SetEase(Ease.OutElastic);
         }
         
-        public void PlayAnimationShow()
+        public Tween PlayAnimationShow()
         {
-            transform.DOScale(1f, 0.35f)
+            return transform.DOScale(1f, 0.35f)
                 .SetEase(Ease.InElastic);
         }
+        
+        public void Interactive(bool isInteractive) =>
+            _button.interactable = isInteractive;
         
         private void SetInfo()
         {
@@ -78,21 +75,14 @@ namespace Window.HeroSetUpWindow
         {
             UnsubscribeEvents();
         }
-
-        private void SubscribeEvents()
-        {
+        
+        private void SubscribeEvents() =>
             _button.onClick.AddListener(OnSelectedHeroCard);
-        }
 
-        private void UnsubscribeEvents()
-        {
+        private void UnsubscribeEvents() =>
             _button.onClick.RemoveListener(OnSelectedHeroCard);
-        }
 
-        private void OnSelectedHeroCard()
-        {
+        private void OnSelectedHeroCard() =>
             SelectedHeroCard?.Invoke(this);
-            _button.interactable = false;
-        }
     }    
 }

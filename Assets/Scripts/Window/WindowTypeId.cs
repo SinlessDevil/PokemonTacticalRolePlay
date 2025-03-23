@@ -7,6 +7,7 @@
         Lose = 2,
         Bonus = 3,
         Setting = 4,
-        Debug = 5
+        Debug = 5,
+        HeroSetUpWindow = 6,
     }
 }

@@ -256,7 +256,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -2436.3}
+  m_AnchoredPosition: {x: 0, y: -2336}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1581984244731233593
@@ -386,6 +386,7 @@ GameObject:
   - component: {fileID: 8391144717756054456}
   - component: {fileID: 6545298957208197946}
   - component: {fileID: 8291649365188533643}
+  - component: {fileID: 1920857273092014005}
   m_Layer: 5
   m_Name: Button_Exit
   m_TagString: Untagged
@@ -494,3 +495,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1920857273092014005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9079757509934369126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d67a88276d0af46ad591b6491e0e41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _image: {fileID: 6545298957208197946}
+  ScaleAmount: 0.8
+  ScaleDuration: 0.2

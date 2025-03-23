@@ -11,8 +11,8 @@ namespace Window.HeroSetUpWindow
 {
     public class HeroSetUpWindow : MonoBehaviour
     {
-        [SerializeField] private RectTransform _containerChoice;
-        [SerializeField] private RectTransform _containerSelection;
+        [SerializeField] private HorizontalLayoutGroup _containerChoice;
+        [SerializeField] private HorizontalLayoutGroup _containerSelection;
         [SerializeField] private Text _textCount;
         [SerializeField] private CanvasGroup _canvasGroup;
         
@@ -28,79 +28,137 @@ namespace Window.HeroSetUpWindow
             IHeroSetUpFactory heroSetUpFactory)
         {
             _battleStarter = battleStarter;
+            _heroSetUpFactory = heroSetUpFactory;
         }
 
         public void Initialize()
         {
-            AnimationShow();
-            OnUpdateHeroCard();
+            PlayAnimationShow().Play();
+            UpdateTextCount();
+            OnUpdateHeroCardAsync().Forget();
         }
 
-        private void AnimationShow()
+        private Tween PlayAnimationShow()
         {
-            _canvasGroup.DOFade(1f, 0.35f)
+            _canvasGroup.alpha = 0f;
+            return _canvasGroup.DOFade(1f, 0.35f)
+                .SetEase(Ease.Linear);
+        }
+
+        private Tween PlayAnimationHide()
+        {
+            _canvasGroup.alpha = 1f;
+            return _canvasGroup.DOFade(0f, 0.35f)
                 .SetEase(Ease.Linear);
         }
         
-        private async UniTask OnUpdateHeroCard()
+        private async UniTask OnUpdateHeroCardAsync()
         {
-            await DestroyHeroCard();
-            SetUpHeroCards();
-
+            await DestroyHeroCardAsync();
+            await SetUpHeroCardAsync();
         }
 
-        private async UniTask DestroyHeroCard()
+        private async UniTask DestroyHeroCardAsync()
         {
-            foreach (HeroCard _heroCard in _heroCardsSelected)
+            List<UniTask> animationTasks = new();
+
+            foreach (var heroCard in _heroCardsSelected)
             {
-                _heroCard.SelectedHeroCard -= OnSelectedHeroCard;
-                _heroCard.PlayAnimationHide();
+                heroCard.SelectedHeroCard -= OnSelectedHeroCardWrapper;
+                animationTasks.Add(heroCard.PlayAnimationHide().ToUniTask());
             }
-            // await 
-        }
 
-        private void SetUpHeroCards()
+            await UniTask.WhenAll(animationTasks);
+
+            _heroCardsSelected.ForEach(x => Destroy(x.gameObject));
+            _heroCardsSelected.Clear();
+        }
+        
+        private async UniTask SetUpHeroCardAsync()
         {
-            for (int i = 0; i < 3; i++)
+            List<UniTask> animationTasks = new();
+
+            for (int i = 0; i < _battleStarter.GetMaxHeroesCount; i++)
             {
-                var heroCard = _heroSetUpFactory.CreateHeroCard(_containerChoice, _battleStarter.RandomHeroTypeId());
+                var heroCard = _heroSetUpFactory.CreateHeroCard((RectTransform)_containerChoice.transform, _battleStarter.RandomHeroTypeId());
                 _heroCardsChoice.Add(heroCard);
-                heroCard.SelectedHeroCard += OnSelectedHeroCard;
-                heroCard.PlayAnimationShow();
+                heroCard.SelectedHeroCard += OnSelectedHeroCardWrapper;
+                animationTasks.Add(heroCard.PlayAnimationShow().ToUniTask());
             }
+
+            await UniTask.WhenAll(animationTasks);
         }
 
-        private void OnSelectedHeroCard(HeroCard selected)
+        private void OnSelectedHeroCardWrapper(HeroCard selected)
         {
-            selected.SelectedHeroCard -= OnSelectedHeroCard;
+            OnSelectedHeroCardAsync(selected).Forget();
+        }
+        
+        private async UniTask OnSelectedHeroCardAsync(HeroCard selected)
+        {
+            _heroCardsChoice.ForEach(x => x.Interactive(false));
+            selected.transform.SetParent(this.transform);
+            _heroCardsChoice.Remove(selected);
+            
+            selected.SelectedHeroCard -= OnSelectedHeroCardWrapper;
+            
             _heroCardsSelected.Add(selected);
 
-            if (_heroCardsSelected.Count == 3)
+            await PlayAnimationCardMoveAsync(selected);
+            
+            UpdateTextCount();
+            
+            if (_heroCardsSelected.Count == _battleStarter.GetMaxHeroesCount)
             {
-                StartGame().Forget();
+                StartGameAsync().Forget();
             }
             else
             {
-                OnUpdateHeroCard().Forget();
+                OnUpdateHeroCardAsync().Forget();
             }
         }
-        
-        private async UniTask StartGame()
+
+        private void UpdateTextCount()
         {
+            _textCount.text = "Selected Hero Card " + 
+                              _heroCardsSelected.Count + " / " + 
+                              _battleStarter.GetMaxHeroesCount;
+        }
+
+        private async UniTask PlayAnimationCardMoveAsync(HeroCard heroCard)
+        {
+            Vector3 startPosition = heroCard.transform.position;
+            Vector3 endPosition = _containerSelection.transform.position;
+    
+            float offsetY = 100f;
+            Vector3 middlePoint = (startPosition + endPosition) / 2 + Vector3.up * offsetY;
+            Vector3[] path = { startPosition, middlePoint, endPosition };
             
-            // await 
+            await heroCard.transform.DOPath(path, 0.5f, PathType.CatmullRom)
+                .SetEase(Ease.InOutQuad)
+                .ToUniTask();
+            
+            heroCard.transform.SetParent(_containerSelection.transform, true);
+            
+            await heroCard.transform.DOScale(0.8f, 0.15f)
+                .SetEase(Ease.Linear)
+                .ToUniTask();
+
+            await heroCard.transform.DOScale(1f, 0.15f)
+                .SetEase(Ease.Linear)
+                .ToUniTask();
+        }
+        
+        private async UniTask StartGameAsync()
+        {
+            await PlayAnimationHide();
             
             _battleStarter.StartRandomBattle();
 
-            Hide();
-        }
-
-        private void PlayAnimationHide()
-        {
-            
+            Dispose();
         }
         
-        private void Hide()
+        private void Dispose()
         {
             Destroy(gameObject);
         }
