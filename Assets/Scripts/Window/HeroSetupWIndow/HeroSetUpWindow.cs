@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using Zenject;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Services.Levels;
 
 namespace Window.HeroSetUpWindow
 {
@@ -13,6 +14,7 @@ namespace Window.HeroSetUpWindow
     {
         [SerializeField] private HorizontalLayoutGroup _containerChoice;
         [SerializeField] private HorizontalLayoutGroup _containerSelection;
+        [SerializeField] private HorizontalLayoutGroup _containerEnemies;
         [SerializeField] private Text _textCount;
         [SerializeField] private CanvasGroup _canvasGroup;
         
@@ -21,19 +23,24 @@ namespace Window.HeroSetUpWindow
         
         private IBattleStarter _battleStarter;
         private IHeroSetUpFactory _heroSetUpFactory;
-        
+        private ILevelService _levelService;
+
         [Inject]
         public void Construct(
             IBattleStarter battleStarter,
-            IHeroSetUpFactory heroSetUpFactory)
+            IHeroSetUpFactory heroSetUpFactory,
+            ILevelService levelService)
         {
             _battleStarter = battleStarter;
             _heroSetUpFactory = heroSetUpFactory;
+            _levelService = levelService;
         }
 
-        public void Initialize()
+        public async UniTask Initialize()
         {
+            await PlayAnimationShow().Play().ToUniTask();
             UpdateTextCount();
+            OnInitEnemiesHeroCardAsync().Forget();
             OnUpdateHeroCardAsync().Forget();
         }
 
@@ -51,9 +58,27 @@ namespace Window.HeroSetUpWindow
                 .SetEase(Ease.Linear);
         }
         
+        private async UniTask OnInitEnemiesHeroCardAsync()
+        {
+            List<UniTask> animationTasks = new();
+
+            var enemies = _levelService.GetCurrentLevelStaticData().Enemies;
+            var enemiesHeroCard = new List<HeroCard>(3);
+            
+            for (int i = 0; i < _battleStarter.GetMaxHeroesCount; i++)
+            {
+                var heroCard = _heroSetUpFactory.CreateHeroCard((RectTransform)_containerEnemies.transform, enemies[i]);
+                animationTasks.Add(heroCard.PlayAnimationShow().ToUniTask());
+                enemiesHeroCard.Add(heroCard);
+            }
+            
+            await UniTask.WhenAll(animationTasks);
+            
+            enemiesHeroCard.ForEach(x => x.Interactive(false));
+        }
+        
         private async UniTask OnUpdateHeroCardAsync()
         {
-            await PlayAnimationShow().Play().ToUniTask();
             await DestroyHeroCardAsync();
             await SetUpHeroCardAsync();
         }
