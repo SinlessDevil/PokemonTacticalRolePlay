@@ -25,7 +25,7 @@ namespace Services.Factories.Hero
         {
             HeroConfig config = _staticDataService.HeroConfigFor(heroTypeId);
             HeroBehaviour hero = _instantiator
-                .InstantiatePrefabForComponent<HeroBehaviour>(config.Prefab, slot.transform)
+                .InstantiatePrefabForComponent<HeroBehaviour>(config.Prefab)
                 .With(x => x.TypeId = heroTypeId)
                 .With(x => x.Id = Guid.NewGuid().ToString());
 
@@ -42,7 +42,8 @@ namespace Services.Factories.Hero
             );
 
             hero.transform.rotation = Quaternion.Euler(slot.transform.rotation.eulerAngles.x, slot.transform.rotation.eulerAngles.y, slot.transform.rotation.eulerAngles.z);
-            hero.transform.position = Vector3.zero;
+            hero.transform.position = slot.transform.position;
+            hero.transform.SetParent(slot.transform);
             
             return hero;
         }

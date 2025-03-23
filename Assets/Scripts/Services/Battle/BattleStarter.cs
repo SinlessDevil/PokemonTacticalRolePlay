@@ -76,20 +76,22 @@ namespace Services.Battle
         
         private void SetupPlayerTeam(SlotSetupBehaviour slotSetup)
         {
-            foreach (HeroTypeId heroTypeId in _playerHeroTypeIds)
             foreach (Slot slot in slotSetup.FirstTeamSlots)
             {
-                HeroBehaviour hero = _heroFactory.CreateHeroAt(heroTypeId, slot, slot.Turned);
+                int index = slotSetup.FirstTeamSlots.IndexOf(slot);
+                HeroBehaviour hero = _heroFactory.CreateHeroAt(_playerHeroTypeIds[index], slot, slot.Turned);
                 _heroRegistry.RegisterPlayerTeamHero(hero);
             }
         }
 
         private void SetupEnemyTeam(SlotSetupBehaviour slotSetup)
         {
-            foreach (HeroTypeId heroTypeId in _levelService.GetCurrentLevelStaticData().Enemies)
+            var listEnemy = _levelService.GetCurrentLevelStaticData().Enemies;
+            
             foreach (Slot slot in slotSetup.SecondTeamSlots)
             {
-                HeroBehaviour hero = _heroFactory.CreateHeroAt(heroTypeId, slot, slot.Turned);
+                int index = slotSetup.SecondTeamSlots.IndexOf(slot);
+                HeroBehaviour hero = _heroFactory.CreateHeroAt(listEnemy[index], slot, slot.Turned);
                 _heroRegistry.RegisterEnemyTeamHero(hero);
             }
         }
