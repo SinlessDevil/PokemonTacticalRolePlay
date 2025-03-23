@@ -27,7 +27,7 @@ MonoBehaviour:
     Animation:
       AnimationIndex: 1
       Delay: 0.5
-    CustomTargetFx: {fileID: 3120323117366962388, guid: 8944e4a5546f64a438090398927b1b96, type: 3}
+    CustomTargetFx: {fileID: 5724093481334579524, guid: eb24c3da2a84b7b4ca5d850dd712182b, type: 3}
   - TypeId: 402
     Kind: 4
     Name: Death Grip
@@ -38,7 +38,7 @@ MonoBehaviour:
     Animation:
       AnimationIndex: 2
       Delay: 1
-    CustomTargetFx: {fileID: 87106950742767038, guid: bbdd7551db5634b4ab0a2104e83aec00, type: 3}
+    CustomTargetFx: {fileID: 8773381781396489466, guid: efa9744965bad834dbe624773114f9a5, type: 3}
   - TypeId: 403
     Kind: 1
     Name: Call Beyond
@@ -49,7 +49,7 @@ MonoBehaviour:
     Animation:
       AnimationIndex: 2
       Delay: 1
-    CustomTargetFx: {fileID: 87106950742767038, guid: bbdd7551db5634b4ab0a2104e83aec00, type: 3}
+    CustomTargetFx: {fileID: 5724093481334579524, guid: cc46455f93c30794dafa85963dfb1f04, type: 3}
   IconImage: {fileID: 21300000, guid: 04583f52f968a1a418f9079810eae7dd, type: 3}
   BgSprite: {fileID: 21300000, guid: 6269e95fbaa594f67a3f90a6d8624ca9, type: 3}
   Prefab: {fileID: 7839633962325119934, guid: a59349f72ea9fa34e92c3c0d842784b0, type: 3}

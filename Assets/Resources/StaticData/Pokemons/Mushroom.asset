@@ -27,7 +27,7 @@ MonoBehaviour:
     Animation:
       AnimationIndex: 1
       Delay: 0.5
-    CustomTargetFx: {fileID: 4830091634964828263, guid: bb2a24e56df321b4688fc2710ed5c5bb, type: 3}
+    CustomTargetFx: {fileID: 8260617210669617129, guid: 5ebe2034595c94f41a8e89907c5be9a5, type: 3}
   - TypeId: 302
     Kind: 2
     Name: Support
@@ -38,7 +38,7 @@ MonoBehaviour:
     Animation:
       AnimationIndex: 2
       Delay: 0.2
-    CustomTargetFx: {fileID: 0}
+    CustomTargetFx: {fileID: 6816406262456432491, guid: 0bc1abd017feb4c45a38d77b0785b699, type: 3}
   - TypeId: 303
     Kind: 2
     Name: Reanimate
@@ -49,7 +49,7 @@ MonoBehaviour:
     Animation:
       AnimationIndex: 2
       Delay: 0.2
-    CustomTargetFx: {fileID: 0}
+    CustomTargetFx: {fileID: 6816406262456432491, guid: 0bc1abd017feb4c45a38d77b0785b699, type: 3}
   IconImage: {fileID: 21300000, guid: b72a2f9b1407eca41a8f2a0ec4f34273, type: 3}
   BgSprite: {fileID: 21300000, guid: 7737f20b135e044d3af299df0b1c7064, type: 3}
   Prefab: {fileID: 7839633962325119934, guid: e2b3f2eb49a4a97489f3f59323def814, type: 3}

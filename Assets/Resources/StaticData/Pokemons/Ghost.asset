@@ -27,7 +27,7 @@ MonoBehaviour:
     Animation:
       AnimationIndex: 1
       Delay: 0.5
-    CustomTargetFx: {fileID: 4333323771432790967, guid: 37e258cf8f5007846a46c2528b0037ef, type: 3}
+    CustomTargetFx: {fileID: 1835174905073365006, guid: adfd6c86cf180e64aaaa1bece2395926, type: 3}
   - TypeId: 202
     Kind: 1
     Name: Immolate imrpoved
@@ -38,7 +38,7 @@ MonoBehaviour:
     Animation:
       AnimationIndex: 2
       Delay: 0.5
-    CustomTargetFx: {fileID: 4333323771432790967, guid: 37e258cf8f5007846a46c2528b0037ef, type: 3}
+    CustomTargetFx: {fileID: 8893727107283924020, guid: 31acaa56c82443145b863d0e31da5182, type: 3}
   - TypeId: 203
     Kind: 4
     Name: Conflagrate (Crit)
@@ -49,7 +49,7 @@ MonoBehaviour:
     Animation:
       AnimationIndex: 2
       Delay: 0.5
-    CustomTargetFx: {fileID: 4333323771432790967, guid: 37e258cf8f5007846a46c2528b0037ef, type: 3}
+    CustomTargetFx: {fileID: 8773381781396489466, guid: 10dd21f5be7c14641af64a5b47f1929d, type: 3}
   IconImage: {fileID: 21300000, guid: b4cb46bb486e4284d91ae664f4a627c8, type: 3}
   BgSprite: {fileID: 21300000, guid: 5604103f0ebf14ca3bf6b653635c879b, type: 3}
   Prefab: {fileID: 7839633962325119934, guid: 2904b788ee4e9014790169482b305f13, type: 3}

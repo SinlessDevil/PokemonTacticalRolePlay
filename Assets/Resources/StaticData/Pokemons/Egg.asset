@@ -27,7 +27,7 @@ MonoBehaviour:
     Animation:
       AnimationIndex: 1
       Delay: 0.5
-    CustomTargetFx: {fileID: 492576381530421194, guid: bb00c2a3cd645784396203127c397891, type: 3}
+    CustomTargetFx: {fileID: 6426256190938255714, guid: 2b234aa3fbca2cc4bac107ae891e8b5f, type: 3}
   - TypeId: 102
     Kind: 2
     Name: Penitence
@@ -38,7 +38,7 @@ MonoBehaviour:
     Animation:
       AnimationIndex: 2
       Delay: 0.2
-    CustomTargetFx: {fileID: 0}
+    CustomTargetFx: {fileID: 9028010256090997819, guid: 5a04b20517b259349ac7e9dc243ca465, type: 3}
   - TypeId: 103
     Kind: 2
     Name: Prayer
@@ -49,7 +49,7 @@ MonoBehaviour:
     Animation:
       AnimationIndex: 2
       Delay: 0.2
-    CustomTargetFx: {fileID: 0}
+    CustomTargetFx: {fileID: 9028010256090997819, guid: 5a04b20517b259349ac7e9dc243ca465, type: 3}
   IconImage: {fileID: 21300000, guid: 2765584043d58ed4b94a001f125a202d, type: 3}
   BgSprite: {fileID: 21300000, guid: 0e4a59fb25cd54d52bba56438e0d0894, type: 3}
   Prefab: {fileID: 7839633962325119934, guid: 0f488496984010c4caa274825303374c, type: 3}
