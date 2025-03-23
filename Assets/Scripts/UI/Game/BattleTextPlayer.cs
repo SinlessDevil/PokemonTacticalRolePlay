@@ -5,7 +5,7 @@ namespace UI.Game
 {
     public class BattleTextPlayer : IBattleTextPlayer, IInitializable
     {
-        private const string BattleTextPath = "ui/battleText/BattleText";
+        private const string BattleTextPath = "UI/BattleTexts/BattleText";
 
         public Transform TextRoot { get; set; }
 

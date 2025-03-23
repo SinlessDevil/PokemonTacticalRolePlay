@@ -33,7 +33,6 @@ namespace Window.HeroSetUpWindow
 
         public void Initialize()
         {
-            PlayAnimationShow().Play();
             UpdateTextCount();
             OnUpdateHeroCardAsync().Forget();
         }
@@ -54,6 +53,7 @@ namespace Window.HeroSetUpWindow
         
         private async UniTask OnUpdateHeroCardAsync()
         {
+            await PlayAnimationShow().Play().ToUniTask();
             await DestroyHeroCardAsync();
             await SetUpHeroCardAsync();
         }
@@ -62,7 +62,7 @@ namespace Window.HeroSetUpWindow
         {
             List<UniTask> animationTasks = new();
 
-            foreach (var heroCard in _heroCardsSelected)
+            foreach (var heroCard in _heroCardsChoice)
             {
                 heroCard.SelectedHeroCard -= OnSelectedHeroCardWrapper;
                 animationTasks.Add(heroCard.PlayAnimationHide().ToUniTask());
@@ -70,14 +70,14 @@ namespace Window.HeroSetUpWindow
 
             await UniTask.WhenAll(animationTasks);
 
-            _heroCardsSelected.ForEach(x => Destroy(x.gameObject));
-            _heroCardsSelected.Clear();
+            _heroCardsChoice.ForEach(x => Destroy(x.gameObject));
+            _heroCardsChoice.Clear();
         }
         
         private async UniTask SetUpHeroCardAsync()
         {
             List<UniTask> animationTasks = new();
-
+            
             for (int i = 0; i < _battleStarter.GetMaxHeroesCount; i++)
             {
                 var heroCard = _heroSetUpFactory.CreateHeroCard((RectTransform)_containerChoice.transform, _battleStarter.RandomHeroTypeId());
@@ -85,8 +85,10 @@ namespace Window.HeroSetUpWindow
                 heroCard.SelectedHeroCard += OnSelectedHeroCardWrapper;
                 animationTasks.Add(heroCard.PlayAnimationShow().ToUniTask());
             }
-
+            
             await UniTask.WhenAll(animationTasks);
+            
+            _heroCardsChoice.ForEach(x => x.ResetButtonScale());
         }
 
         private void OnSelectedHeroCardWrapper(HeroCard selected)
@@ -130,21 +132,24 @@ namespace Window.HeroSetUpWindow
             Vector3 startPosition = heroCard.transform.position;
             Vector3 endPosition = _containerSelection.transform.position;
     
-            float offsetY = 100f;
-            Vector3 middlePoint = (startPosition + endPosition) / 2 + Vector3.up * offsetY;
+            float offsetX = 400f;
+            Vector3 middlePoint = (startPosition + endPosition) / 2 + Vector3.right * offsetX;
             Vector3[] path = { startPosition, middlePoint, endPosition };
+
+            heroCard.transform.DOScale(0.4f, 0.75f)
+                .SetEase(Ease.Linear);
             
-            await heroCard.transform.DOPath(path, 0.5f, PathType.CatmullRom)
-                .SetEase(Ease.InOutQuad)
+            await heroCard.transform.DOPath(path, 0.75f, PathType.CatmullRom)
+                .SetEase(Ease.Linear)
                 .ToUniTask();
             
             heroCard.transform.SetParent(_containerSelection.transform, true);
             
-            await heroCard.transform.DOScale(0.8f, 0.15f)
+            await heroCard.transform.DOScale(0.3f, 0.15f)
                 .SetEase(Ease.Linear)
                 .ToUniTask();
 
-            await heroCard.transform.DOScale(1f, 0.15f)
+            await heroCard.transform.DOScale(0.4f, 0.15f)
                 .SetEase(Ease.Linear)
                 .ToUniTask();
         }

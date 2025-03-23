@@ -41,8 +41,8 @@ namespace Services.Factories.Hero
                 slot.SlotNumber
             );
 
-            hero.transform.rotation = Quaternion.Euler(slot.transform.rotation.eulerAngles.x, 
-                slot.transform.rotation.eulerAngles.y, slot.transform.rotation.eulerAngles.z);
+            hero.transform.rotation = Quaternion.Euler(slot.transform.rotation.eulerAngles.x, slot.transform.rotation.eulerAngles.y, slot.transform.rotation.eulerAngles.z);
+            hero.transform.position = Vector3.zero;
             
             return hero;
         }

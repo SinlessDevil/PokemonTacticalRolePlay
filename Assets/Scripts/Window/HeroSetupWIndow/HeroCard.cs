@@ -4,6 +4,7 @@ using Services.StaticData;
 using StaticData.Heroes;
 using UnityEngine;
 using UnityEngine.UI;
+using UI.Buttons;
 using Zenject;
 using DG.Tweening;
 
@@ -21,6 +22,7 @@ namespace Window.HeroSetUpWindow
         [SerializeField] private Image _bgImage;
         [Space(10)] [Header("Additional Components")]
         [SerializeField] private Button _button;
+        [SerializeField] private ButtonScaler _buttonScaler;
         
         private HeroTypeId _heroTypeId;
         
@@ -45,18 +47,20 @@ namespace Window.HeroSetUpWindow
 
         public Tween PlayAnimationHide()
         {
-            return transform.DOScale(0f, 0.35f)
-                .SetEase(Ease.OutElastic);
+            return transform.DOScale(0f, 0.5f)
+                .SetEase(Ease.InBack);
         }
         
         public Tween PlayAnimationShow()
         {
-            return transform.DOScale(1f, 0.35f)
-                .SetEase(Ease.InElastic);
+            return transform.DOScale(1f, 0.5f)
+                .SetEase(Ease.OutBack);
         }
         
         public void Interactive(bool isInteractive) =>
             _button.interactable = isInteractive;
+
+        public void ResetButtonScale() => _buttonScaler.Reset();
         
         private void SetInfo()
         {

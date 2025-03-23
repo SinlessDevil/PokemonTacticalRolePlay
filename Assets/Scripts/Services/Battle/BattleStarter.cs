@@ -6,6 +6,7 @@ using Services.Factories.Hero;
 using Services.HeroRegistry;
 using Services.Levels;
 using StaticData.Heroes;
+using UnityEngine;
 
 namespace Services.Battle
 {
@@ -42,6 +43,8 @@ namespace Services.Battle
 
         public void StartRandomBattle()
         {
+            Debug.Log("Start");
+            
             SetupPlayerTeam(_slotSetup);
             SetupEnemyTeam(_slotSetup);
 
