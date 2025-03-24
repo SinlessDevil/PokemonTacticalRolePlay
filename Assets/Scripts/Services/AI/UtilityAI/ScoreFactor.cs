@@ -10,5 +10,10 @@ namespace Services.AI.UtilityAI
             Name = name;
             Score = score;
         }
+        
+        public override string ToString()
+        {
+            return $"{Name} -> {(Score >= 0 ? "+" : "")} {Score}";
+        }
     }
 }

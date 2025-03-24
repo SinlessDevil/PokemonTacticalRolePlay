@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-
-// using CodeBase.Gameplay.AI.Utility;
+using Services.AI.UtilityAI;
 
 namespace Services.AI.Reporting
 {
@@ -10,6 +9,6 @@ namespace Services.AI.Reporting
 
         public string FormattedLine;
 
-        // public List<ScoredAction> Choices;
+        public List<ScoredAction> Choices;
     }
 }
