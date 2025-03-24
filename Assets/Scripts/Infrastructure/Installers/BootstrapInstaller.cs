@@ -3,6 +3,7 @@ using Infrastructure.StateMachine.Game;
 using Infrastructure.StateMachine.Game.States;
 using Services.AI;
 using Services.AI.Reporting;
+using Services.AI.UtilityAI;
 using Services.Battle;
 using Services.Cooldown;
 using Services.Death;
@@ -95,7 +96,7 @@ namespace Infrastructure.Installers
             Container.Bind<IDeathService>().To<DeathService>().AsSingle();
             Container.Bind<IInitiativeService>().To<InitiativeService>().AsSingle();
             Container.Bind<ITargetPicker>().To<TargetPicker>().AsSingle();
-            Container.Bind<IArtificialIntelligence>().To<StupidAI>().AsSingle();
+            Container.Bind<IArtificialIntelligence>().To<UtilityAI>().AsSingle();
         }
 
         private void BindFinishServices()
