@@ -20,10 +20,10 @@ namespace Services.Skills.Targeting
             {
                 case TargetType.Ally:
                 case TargetType.AllAllies:
-                    return _heroRegistry.EnemiesOf(casterId);
+                    return _heroRegistry.AlliesOf(casterId);
                 case TargetType.Enemy:
                 case TargetType.AllEnemies:
-                    return _heroRegistry.AlliesOf(casterId);
+                    return _heroRegistry.EnemiesOf(casterId);
                 case TargetType.Self:
                     return new[] { casterId };
                 default:
