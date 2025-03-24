@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Logic.Heroes;
+using Services.Skills;
 
 namespace Services.AI.UtilityAI
 {
@@ -8,7 +9,7 @@ namespace Services.AI.UtilityAI
     {
         public void Add(
             Func<BattleSkill, IHero, bool> appliesTo, 
-            Func<BattleSkill, IHero, float> getInput, 
+            Func<BattleSkill, IHero, ISkillSolver, float> getInput, 
             Func<float, IHero, float> score, 
             string name)
         {

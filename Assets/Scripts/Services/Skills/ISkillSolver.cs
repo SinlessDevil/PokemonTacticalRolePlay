@@ -1,4 +1,5 @@
 using Services.Battle;
+using StaticData.Skills;
 
 namespace Services.Skills
 {
@@ -6,5 +7,6 @@ namespace Services.Skills
     {
         void ProcessHeroAction(HeroAction heroAction);
         void SkillDelaysTick();
+        float CalculateSkillValue(string skillCasterId, SkillTypeId skillTypeId, string targetId);
     }
 }

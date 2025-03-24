@@ -8,6 +8,7 @@ namespace Services.AI.UtilityAI
         public SkillTypeId TypeId;
         public SkillKind Kind;
         public TargetType TargetType;
+        public float MaxCooldown;
         public bool IsSingleTarget => TargetType is TargetType.Ally or TargetType.Enemy or TargetType.Self;
     }
 }

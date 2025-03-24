@@ -52,7 +52,16 @@ namespace Services.Skills.SkillApplier
         {
             
         }
+        
+        public float CalculateSkillValue(string casterId, SkillTypeId skillTypeId, string targetId)
+        {
+            HeroBehaviour caster = _heroRegistry.GetHero(casterId);
+            HeroBehaviour target = _heroRegistry.GetHero(targetId);
+            HeroSkill skill = _staticDataService.HeroSkillFor(skillTypeId, caster.TypeId);
 
+            return target.State.MaxHp * skill.Value;
+        }
+        
         private void PlayFx(GameObject fxPrefab, Vector3 position)
         {
             if (fxPrefab)

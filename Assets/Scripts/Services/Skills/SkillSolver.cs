@@ -64,6 +64,15 @@ namespace Services.Skills
                 skillApplier.WarmUp();
         }
 
+        public float CalculateSkillValue(string casterId, SkillTypeId skillTypeId, string targetId)
+        {
+            HeroBehaviour caster = _heroRegistry.GetHero(casterId);
+            SkillKind kind = _staticDataService.HeroSkillFor(skillTypeId, caster.TypeId).Kind;
+
+            return _appliers.Find(applier => applier.SkillKind == kind)
+                .CalculateSkillValue(casterId, skillTypeId, targetId);
+        }
+
         public void SkillDelaysTick()
         {
             for (int i = _activeSkills.Count - 1; i >= 0; i--)

@@ -5,6 +5,7 @@ using Extensions;
 using Logic.Heroes;
 using Services.Battle;
 using Services.HeroRegistry;
+using Services.Skills;
 using Services.Skills.Targeting;
 using Services.StaticData;
 
@@ -15,17 +16,20 @@ namespace Services.AI.UtilityAI
         private readonly IStaticDataService _staticDataService;
         private readonly ITargetPicker _targetPicker;
         private readonly IHeroRegistry _heroRegistry;
+        private readonly ISkillSolver _skillSolver;
         private readonly IEnumerable<IUtilityFunction> _utilityFunctions;
 
         public UtilityAI(
             IStaticDataService staticDataService, 
             ITargetPicker targetPicker, 
-            IHeroRegistry heroRegistry)
+            IHeroRegistry heroRegistry, 
+            ISkillSolver skillSolver)
         {
             _staticDataService = staticDataService;
             _targetPicker = targetPicker;
             _heroRegistry = heroRegistry;
-            
+            _skillSolver = skillSolver;
+
             _utilityFunctions = new Brains().GetUnitilityFunctions();
         }
 
@@ -44,7 +48,8 @@ namespace Services.AI.UtilityAI
                     CasterId = readyHero.Id,
                     TypeId = x.TypeId,
                     Kind = _staticDataService.HeroSkillFor(x.TypeId, readyHero.TypeId).Kind,
-                    TargetType = _staticDataService.HeroSkillFor(x.TypeId, readyHero.TypeId).TargetType
+                    TargetType = _staticDataService.HeroSkillFor(x.TypeId, readyHero.TypeId).TargetType,
+                    MaxCooldown = x.MaxCooldown 
                 });
         }
 
@@ -79,7 +84,7 @@ namespace Services.AI.UtilityAI
             IEnumerable<ScoreFactor> scoreFactors = (
                 from utilityFunction in _utilityFunctions
                 where utilityFunction.AppliesTo(skill, hero)
-                let input = utilityFunction.GetInput(skill, hero)
+                let input = utilityFunction.GetInput(skill, hero, _skillSolver)
                 let score = utilityFunction.Score(input, hero)
                 
                 select new ScoreFactor(utilityFunction.Name, score));

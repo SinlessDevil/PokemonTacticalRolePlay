@@ -12,6 +12,8 @@ namespace Logic.Heroes
         public float MaxInitiative;
 
         public List<SkillState> SkillStates;
+        public float HpPercentage => CurrentHp / MaxHp;
+        public float InitiativePercentage => CurrentInitiative / MaxInitiative;
 
         public void ModifyInitiative(float value)
         {

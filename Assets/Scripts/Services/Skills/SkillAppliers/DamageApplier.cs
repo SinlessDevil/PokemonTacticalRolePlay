@@ -26,11 +26,6 @@ namespace Services.Skills.SkillApplier
             _battleTextPlayer = battleTextPlayer;
         }
 
-        public void WarmUp()
-        {
-            
-        }
-
         public void ApplySkill(ActiveSkill activeSkill)
         {
             foreach (string targetId in activeSkill.TargetIds)
@@ -50,6 +45,18 @@ namespace Services.Skills.SkillApplier
             }
         }
 
+        public void WarmUp()
+        {
+            
+        }
+        
+        public float CalculateSkillValue(string casterId, SkillTypeId skillTypeId, string targetId)
+        {
+            HeroBehaviour caster = _heroRegistry.GetHero(casterId);
+            HeroSkill skill = _staticDataService.HeroSkillFor(skillTypeId, caster.TypeId);
+            return skill.Value;
+        }
+        
         private void PlayFx(GameObject fxPrefab, Vector3 position)
         {
             if (fxPrefab)
