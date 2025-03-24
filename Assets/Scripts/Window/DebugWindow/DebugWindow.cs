@@ -1,4 +1,6 @@
 ﻿using System.Linq;
+using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using Extensions;
 using Services.AI.Reporting;
 using Services.Battle;
@@ -11,6 +13,7 @@ namespace Window.DebugWindow
 {
     public class DebugWindow : MonoBehaviour
     {
+        public RectTransform ParentRectTransform;
         public HeroActionEntry HeroActionEntryPrefab;
         public DecisionDetailsEntry DecisionDetailsEntryPrefab;
         public DecisionScoresEntry DecisionScoresEntryPrefab;
@@ -37,7 +40,10 @@ namespace Window.DebugWindow
             _battleConductor.HeroActionProduced += OnHeroActionProduced;
             _aiReporter.DecisionDetailsReported += OnDecisionDetailsProduced;
             _aiReporter.DecisionScoresReported += OnDecisionScoresProduced;
-            CloseButton.onClick.AddListener(OnClose);
+            
+            CloseButton.onClick.AddListener(OnCloseWrapper);
+            
+            PlayAnimationShow().Play();
         }
 
         private void OnDestroy()
@@ -45,13 +51,29 @@ namespace Window.DebugWindow
             _battleConductor.HeroActionProduced -= OnHeroActionProduced;
             _aiReporter.DecisionDetailsReported -= OnDecisionDetailsProduced;
             _aiReporter.DecisionScoresReported -= OnDecisionScoresProduced;
-            CloseButton.onClick.RemoveListener(OnClose);
+            
+            CloseButton.onClick.RemoveListener(OnCloseWrapper);
+        }
+        private Tween PlayAnimationShow()
+        {
+            return ParentRectTransform.DOAnchorPosX(0, 0.35f).SetEase(Ease.OutQuad);
         }
 
-        public void SwitchState() =>
-            gameObject.SetActive(!gameObject.activeSelf);
+        private Tween PlayAnimationHide()
+        {
+            return ParentRectTransform.DOAnchorPosX(-900f, 0.35f).SetEase(Ease.InQuad);
+        }
 
-        private void OnClose() => Destroy(gameObject);
+        private void OnCloseWrapper()
+        {
+            OnCloseAsync().Forget();
+        }
+        
+        private async UniTask OnCloseAsync()
+        {
+            await PlayAnimationHide().ToUniTask();
+            Destroy(gameObject);
+        }
         
         private void OnHeroActionProduced(HeroAction action)
         {
@@ -59,9 +81,7 @@ namespace Window.DebugWindow
                 .With(x => x.HeroName.text = $"{action.Caster.TypeId} [{action.Caster.SlotNumber}]")
                 .With(x => x.SkillName.text = $"{action.Skill} ({action.SkillKind})")
                 .With(x => x.TargetsLine.text = action.TargetIds
-                    .Aggregate(
-                        "",
-                        (current, id) =>
+                    .Aggregate("", (current, id) =>
                             current + $" {_registry.GetHero(id).TypeId} [{_registry.GetHero(id).SlotNumber}]"));
         }
 

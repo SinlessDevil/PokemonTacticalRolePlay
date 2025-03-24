@@ -36,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 32, y: 0}
-  m_SizeDelta: {x: 1000, y: -64}
+  m_AnchoredPosition: {x: -800, y: 350}
+  m_SizeDelta: {x: 700, y: -700}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1581984242803549442
 MonoBehaviour:
@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47cb0831ac7d4a40b84c75137db5de06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ParentRectTransform: {fileID: 1581984242803549443}
   HeroActionEntryPrefab: {fileID: 4493961175305235663, guid: 5ff87d4787d8b424cb142a49a1fb7147, type: 3}
   DecisionDetailsEntryPrefab: {fileID: 6704467601520854663, guid: 34c31e90f0d6ead40bf93adb43ada8f8, type: 3}
   DecisionScoresEntryPrefab: {fileID: 6328533850875593263, guid: 122e2dd0f2c16904aacd309c88feef8e, type: 3}
