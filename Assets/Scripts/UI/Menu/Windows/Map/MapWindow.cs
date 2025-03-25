@@ -13,6 +13,7 @@ using UnityEngine.UI;
 using Zenject;
 using DG.Tweening;
 using Services.SFX;
+using StaticData;
 
 namespace UI.Menu.Windows.Map
 {
@@ -135,16 +136,18 @@ namespace UI.Menu.Windows.Map
 
             ClearLevelPool();
 
-            var currentChapter = _chapters[_currentChapterIndex];
+            ChapterStaticData currentChapter = _chapters[_currentChapterIndex];
             
-            foreach (var level in currentChapter.Levels)
+            foreach (LevelStaticData level in currentChapter.Levels)
             {
-                var levelIndex = currentChapter.Levels.IndexOf(level) + 1;
-                var chapterIndex = _currentChapterIndex + 1;
+                int levelIndex = currentChapter.Levels.IndexOf(level) + 1;
+                int chapterIndex = _currentChapterIndex + 1;
 
-                var levelItem = GetPooledItemLevel();
+                ItemLevel levelItem = GetPooledItemLevel();
                 levelItem.Initialize(levelIndex, chapterIndex);
 
+                levelItem.SetCountStarts(_levelService.GetCountStars(chapterIndex, levelIndex));
+                
                 if (_levelService.IsLevelCurrent(chapterIndex, levelIndex))
                 {
                     levelItem.SetCurrent();

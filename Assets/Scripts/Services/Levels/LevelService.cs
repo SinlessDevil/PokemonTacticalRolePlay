@@ -58,7 +58,7 @@ namespace Services.Levels
 
             return levelContainer ?? null;
         }
-        
+
         public void SetUpCurrentLevel(int levelNumber, int chapterId)
         {
             _persistenceProgressService.PlayerData.PlayerLevelData.CurrentProgress.LevelId = levelNumber;
@@ -139,6 +139,13 @@ namespace Services.Levels
 
             playerData.CurrentProgress.ChapterId = playerData.LastProgress.ChapterId;
             playerData.CurrentProgress.LevelId = playerData.LastProgress.LevelId;
+        }
+        
+        public int GetCountStars(int chapterIndex, int levelIndex)
+        {
+            var completedLevel = _persistenceProgressService.PlayerData.PlayerLevelData.LevelsComleted
+                .FirstOrDefault(level => level.ChapterId == chapterIndex && level.LevelId == levelIndex);
+            return completedLevel != null ? completedLevel.CountStart : 0;
         }
         
         public bool IsLevelCompleted(int chapterId, int levelId)

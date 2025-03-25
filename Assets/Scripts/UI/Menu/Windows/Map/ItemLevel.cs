@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Services.SFX;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,13 +10,15 @@ namespace UI.Menu.Windows.Map
     public class ItemLevel : MonoBehaviour
     {
         [SerializeField] private Image _mainImage;
-        [SerializeField] private Text _text;
+        [SerializeField] private List<Text> _texts;
         [SerializeField] private Button _button;
         [Space(10)]
-        [SerializeField] private Color _completedColor = Color.green;
-        [SerializeField] private Color _lockedColor = Color.gray;
-        [SerializeField] private Color _currentColor = Color.yellow;
-        [SerializeField] private Color _unlockedNonCompletedColor = Color.white;
+        [SerializeField] private GameObject _panelCompleted;
+        [SerializeField] private GameObject _panelLocked;
+        [SerializeField] private GameObject _panelCurrent;
+        [SerializeField] private GameObject _panelDefault;
+        [Space(10)] 
+        [SerializeField] private List<GameObject> _starts;
         
         private int _currentLevel;
         private int _currentChapter;
@@ -48,31 +51,60 @@ namespace UI.Menu.Windows.Map
         
         public void SetCurrent()
         {
-            _mainImage.color = _currentColor;
+            DisableAllPanels();
+            
+            _panelDefault.SetActive(true);
+            _panelCurrent.SetActive(true);
+            
             _button.interactable = true;
         }
         
         public void SetCompleted()
         {
-            _mainImage.color = _completedColor;
+            DisableAllPanels();
+            
+            _panelCompleted.SetActive(true);
+            
             _button.interactable = true;
         }
 
         public void SetUnlockedNonCompleted()
         {
-            _mainImage.color = _unlockedNonCompletedColor;
+            DisableAllPanels();
+            
+            _panelDefault.SetActive(true);
+            
             _button.interactable = true;
         }
         
         public void SetLocked()
         {
-            _mainImage.color = _lockedColor;
+            DisableAllPanels();
+            
+            _panelLocked.SetActive(true);
+            
             _button.interactable = false;
+        }
+
+        public void SetCountStarts(int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                _starts[i].SetActive(true);
+            }
+        }
+        
+        private void DisableAllPanels()
+        {
+            _panelCompleted.SetActive(false);
+            _panelLocked.SetActive(false);
+            _panelCurrent.SetActive(false);
+            _panelDefault.SetActive(false);
         }
         
         private void SetText(string text)
         {
-            _text.text = text;
+            _texts.ForEach(x => x.text = text);
         }
         
         private void SubscribeEvents()
@@ -87,6 +119,8 @@ namespace UI.Menu.Windows.Map
         
         private void OnLoadLevel()
         {
+            _soundService.ButtonClick();
+            
             LoadLevelEvent?.Invoke(_currentLevel, _currentChapter);
         }
     }

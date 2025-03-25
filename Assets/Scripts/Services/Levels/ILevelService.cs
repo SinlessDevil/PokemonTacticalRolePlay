@@ -20,5 +20,6 @@ namespace Services.Levels
         bool IsLevelCurrent(int chapterId, int levelId);
         bool IsLastCompletedLevel(int chapterId, int levelId);
         LevelContainer GetCurrentLevelContainer();
+        int GetCountStars(int chapterIndex, int levelIndex);
     }
 }
