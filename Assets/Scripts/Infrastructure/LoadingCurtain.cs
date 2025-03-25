@@ -40,6 +40,8 @@ namespace Infrastructure
         {
             yield return new WaitForSeconds(Delay);
             
+            StopLoadingTextAnimation();
+            
             float screenWidth = Screen.width;
             float elapsedTime = 0f;
 
@@ -61,7 +63,6 @@ namespace Infrastructure
             _left.anchoredPosition = leftTarget;
             _right.anchoredPosition = rightTarget;
             
-            StopLoadingTextAnimation();
             gameObject.SetActive(false);
             IsActive = false;
         }
