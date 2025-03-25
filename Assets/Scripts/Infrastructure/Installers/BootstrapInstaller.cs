@@ -27,6 +27,7 @@ using Services.SFX;
 using Services.Skills;
 using Services.Skills.Targeting;
 using Services.StaticData;
+using Services.Storage;
 using Services.Timer;
 using Services.Window;
 using UI.Game;
@@ -117,6 +118,7 @@ namespace Infrastructure.Installers
         {
             Container.BindInterfacesTo<PersistenceProgressService>().AsSingle();
             Container.BindInterfacesTo<LevelLocalProgressService>().AsSingle();
+            Container.BindInterfacesTo<StorageService>().AsSingle();
             Container.BindInterfacesTo<SaveLoadService>().AsSingle();
         }
 
