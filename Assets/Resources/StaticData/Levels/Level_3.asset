@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91de38510dc8c31408d1878387c1c8af, type: 3}
   m_Name: Level_3
   m_EditorClassIdentifier: 
-  LevelName: Zuma
+  LevelName: Level
   LevelId: 3
   LevelTypeId: 0
   Enemies: 03000000070000000e000000
+  Rewards:
+  - CurrencyType: 0
+    Value: 150
+  - CurrencyType: 1
+    Value: 5

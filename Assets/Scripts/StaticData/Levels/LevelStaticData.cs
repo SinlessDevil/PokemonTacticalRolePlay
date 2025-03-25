@@ -1,6 +1,7 @@
-using System;
 using System.Collections.Generic;
+using Services.Storage;
 using StaticData.Heroes;
+using StaticData.Levels;
 using UnityEngine;
 
 namespace StaticData
@@ -12,14 +13,6 @@ namespace StaticData
         public int LevelId;
         public LevelTypeId LevelTypeId;
         public List<HeroTypeId> Enemies;
+        public List<Currency> Rewards;
     }
-
-    [Serializable]
-    public enum LevelTypeId
-    {
-        Regular = 0, 
-        Special = 1,
-        Bonus = 2,
-    }
-    
 }
