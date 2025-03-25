@@ -627,7 +627,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5663224420188426505}
-  - {fileID: 718009541445365012}
   - {fileID: 7249858491264247989}
   - {fileID: 297595899775469569}
   - {fileID: 1115522439145154735}
@@ -1241,6 +1240,42 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &6290489641351262404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7452801210171269804}
+  m_Layer: 5
+  m_Name: Victory_Starts
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7452801210171269804
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6290489641351262404}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 718009541445365012}
+  m_Father: {fileID: 3813423276399802803}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.054, y: 0.057215456}
+  m_AnchorMax: {x: 0.94400007, y: 0.97200006}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6455555407203059851
 GameObject:
   m_ObjectHideFlags: 0
@@ -1506,6 +1541,7 @@ RectTransform:
   - {fileID: 1986879235073751348}
   - {fileID: 1513025548817678854}
   - {fileID: 7497944337918012870}
+  - {fileID: 7452801210171269804}
   m_Father: {fileID: 2491952011400337389}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.079, y: 0.441}
@@ -1703,7 +1739,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1986879235073751348}
+    m_TransformParent: {fileID: 7452801210171269804}
     m_Modifications:
     - target: {fileID: 1084137527436947637, guid: 6dfb85341b7d6f145bc3290b7e0edb00, type: 3}
       propertyPath: m_IsActive
@@ -1783,7 +1819,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8158903476889620585, guid: 6dfb85341b7d6f145bc3290b7e0edb00, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 7.76001
+      value: 7.758911
       objectReference: {fileID: 0}
     - target: {fileID: 8158903476889620585, guid: 6dfb85341b7d6f145bc3290b7e0edb00, type: 3}
       propertyPath: m_AnchoredPosition.y
