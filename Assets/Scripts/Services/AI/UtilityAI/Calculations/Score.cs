@@ -30,5 +30,11 @@ namespace Services.AI.UtilityAI.Calculations
                 ? input * scaleBy
                 : 0;
         }
+        
+        public static Func<float, IHero, float> ScaleByHpPercentage(float scale) =>
+            (hpPerc, _) => (1f - hpPerc) * scale;
+        
+        public static Func<float, IHero, float> ScaleByHpPercentageHigh(float scale) =>
+            (hpPerc, _) => (1f - hpPerc) * scale;
     }
 }

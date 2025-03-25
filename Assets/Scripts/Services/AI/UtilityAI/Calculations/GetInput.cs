@@ -40,5 +40,11 @@ namespace Services.AI.UtilityAI.Calculations
             target.State.SkillStates.Last().IsReady
             ? True
             : False;
+        
+        public static float WillDieNextTurn(BattleSkill skill, IHero target, ISkillSolver skillSolver) => 
+            target.State.Damage >= target.State.CurrentHp ? True : False;
+
+        public static float TargetInitiativePercentage(BattleSkill skill, IHero target, ISkillSolver skillSolver) =>
+            target.State.CurrentInitiative / target.State.MaxInitiative;
     }
 }
