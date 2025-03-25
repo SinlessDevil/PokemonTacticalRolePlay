@@ -6,8 +6,11 @@ namespace Window.Finish
     {
         [SerializeField] private RectTransform _filledStar;
         [SerializeField] private RectTransform _emptyStar;
+        [SerializeField] private RectTransform _target;
+        [SerializeField] private Animator _animator;
         
         public RectTransform FilledStar => _filledStar;
+        public RectTransform Target => _target;
         
         public void Filled()
         {
@@ -17,6 +20,11 @@ namespace Window.Finish
         public void Empty()
         {
             _filledStar.gameObject.SetActive(false);
+        }
+
+        public void Play()
+        {
+            _animator.CrossFade("End", 0.25f);
         }
     }
 }

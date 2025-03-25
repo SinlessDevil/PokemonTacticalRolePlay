@@ -19,6 +19,8 @@ namespace Services.Finish.Lose
             var window = _windowService.Open(WindowTypeId.Lose);
             var loseWindow = window.GetComponent<LoseWindow>();
             loseWindow.Initialize();
+            loseWindow.ResetWindow();
+            loseWindow.OpenWindow(null);
         }
         
     }

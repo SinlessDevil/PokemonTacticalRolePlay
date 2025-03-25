@@ -79,7 +79,8 @@ namespace Window.Finish.Win
             sequence.AppendInterval(0.2f);
             sequence.Append(_headerContainer.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBounce));
             sequence.AppendInterval(0.2f);
-            sequence.Append(PlayStartShowAnimation());
+            sequence.AppendCallback(PlayStartShowAnimation);
+            sequence.AppendInterval(0.35f);
             sequence.Append(_textWin.DOText(_win, 0.25f).SetEase(Ease.Linear));
             sequence.Append(_textGolds.DOText(_golds, 0.25f).SetEase(Ease.Linear));
             sequence.Append(_textGems.DOText(_gems, 0.25f).SetEase(Ease.Linear));
@@ -94,21 +95,13 @@ namespace Window.Finish.Win
             sequence.OnComplete(() => onFinished?.Invoke());
         }
         
-        private Tween PlayStartShowAnimation()
+        private void PlayStartShowAnimation()
         {
-            Sequence sequence = DOTween.Sequence();
-
             for (int i = 0; i < _countStars; i++)
             {
                 _stars[i].Filled();
-                var targetPosition = _stars[i].FilledStar.position;
-                _stars[i].transform.position += Vector3.up * 2f;
-                sequence.Append(_stars[i].transform.DOScale(Vector3.one * 0.8f, 0.25f).SetEase(Ease.Linear));
-                sequence.Join(_stars[i].transform.DOMove(targetPosition, 0.25f).SetEase(Ease.Linear));
-                sequence.Append(_stars[i].transform.DOScale(Vector3.one , 0.25f).SetEase(Ease.Linear));
+                _stars[i].Play();
             }
-
-            return sequence;
         }
         
         protected override void OnLoadLevelButtonClick()

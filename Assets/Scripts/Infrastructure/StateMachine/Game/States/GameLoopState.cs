@@ -1,4 +1,3 @@
-using Cysharp.Threading.Tasks;
 using Services.Battle;
 using Services.Factories.UIFactory;
 using Services.HeroRegistry;
@@ -8,10 +7,11 @@ using Services.LocalProgress;
 using Services.Provides.Widgets;
 using Services.Timer;
 using Services.Window;
-using UI.Game;
 using UnityEngine;
+using UI.Game;
 using Window;
 using Window.HeroSetUpWindow;
+using Cysharp.Threading.Tasks;
 
 namespace Infrastructure.StateMachine.Game.States
 {
@@ -28,6 +28,7 @@ namespace Infrastructure.StateMachine.Game.States
         private readonly IHeroRegistry _heroRegistry;
         private readonly IBattleStarter _battleStarter;
         private readonly ILoadingCurtain _loadingCurtain;
+        private readonly IBattleFinisher _battleFinisher;
 
         public GameLoopState(
             IInputService inputService,
@@ -40,7 +41,8 @@ namespace Infrastructure.StateMachine.Game.States
             IBattleTextPlayer battleTextPlayer,
             IHeroRegistry heroRegistry,
             IBattleStarter battleStarter,
-            ILoadingCurtain loadingCurtain)
+            ILoadingCurtain loadingCurtain,
+            IBattleFinisher battleFinisher)
         {
             _inputService = inputService;
             _widgetProvider = widgetProvider;
@@ -53,6 +55,7 @@ namespace Infrastructure.StateMachine.Game.States
             _heroRegistry = heroRegistry;
             _battleStarter = battleStarter;
             _loadingCurtain = loadingCurtain;
+            _battleFinisher = battleFinisher;
         }
 
         public void Enter()
@@ -83,6 +86,7 @@ namespace Infrastructure.StateMachine.Game.States
 
         public void Exit()
         {
+            _battleFinisher.CleanUp();
             _battleStarter.CleanUp();
             _heroRegistry.CleanUp();
 

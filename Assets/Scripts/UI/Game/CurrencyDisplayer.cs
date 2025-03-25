@@ -1,8 +1,8 @@
-using DG.Tweening;
 using Services.Storage;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
+using DG.Tweening;
 
 namespace UI.Game
 {
@@ -48,7 +48,7 @@ namespace UI.Game
     
         private void SetUpCurrency()
         {
-            _textCurrency.text = _storageService.GetCurrency(_currencyType).ToString();
+            _textCurrency.text = _storageService.GetCurrency(_currencyType).Value.ToString();
         }
     }
    
