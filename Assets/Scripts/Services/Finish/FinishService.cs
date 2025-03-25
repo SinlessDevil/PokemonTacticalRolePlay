@@ -2,6 +2,7 @@ using Services.Finish.Lose;
 using Services.Finish.Win;
 using Services.Levels;
 using StaticData;
+using StaticData.Levels;
 using UnityEngine;
 
 namespace Services.Finish

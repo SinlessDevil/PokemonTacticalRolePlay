@@ -153,6 +153,7 @@ namespace Infrastructure.Installers
             Container.BindInterfacesTo<BattleTextPlayer>().AsSingle();
             Container.BindInterfacesTo<BattleConductor>().AsSingle();
             Container.Bind<IBattleStarter>().To<BattleStarter>().AsSingle();
+            Container.Bind<IBattleFinisher>().To<BattleFinisher>().AsSingle();
         }
         
         private void BindGameStateMachine()

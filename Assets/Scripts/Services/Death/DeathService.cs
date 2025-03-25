@@ -1,4 +1,7 @@
-﻿using Logic.Heroes;
+﻿using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
+using Logic.Heroes;
+using Services.Battle;
 using Services.HeroRegistry;
 using UnityEngine;
 
@@ -7,11 +10,15 @@ namespace Services.Death
     public class DeathService : IDeathService
     {
         private const float DefaultDestroyTime = 3;
+        
         private readonly IHeroRegistry _heroRegistry;
-
-        public DeathService(IHeroRegistry heroRegistry)
+        private readonly IBattleFinisher _battleFinisher;
+        
+        public DeathService(IHeroRegistry heroRegistry, 
+            IBattleFinisher battleFinisher)
         {
             _heroRegistry = heroRegistry;
+            _battleFinisher = battleFinisher;
         }
 
         public void ProcessDeadHeroes()
@@ -23,10 +30,18 @@ namespace Services.Death
                     continue;
 
                 _heroRegistry.Unregister(hero.Id);
-
+                
                 hero.Animator.PlayDeath();
-                Object.Destroy(hero.gameObject, DefaultDestroyTime);
+                WaitDeathAsync(hero).Forget();
             }
         }
+
+        private async UniTask WaitDeathAsync(HeroBehaviour hero)
+        {
+            await Task.Delay((int)DefaultDestroyTime * 1000);
+            Object.Destroy(hero.gameObject);
+            
+            _battleFinisher.HandleFinish();
+        }  
     }
 }
