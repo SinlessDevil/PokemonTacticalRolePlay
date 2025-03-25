@@ -72,22 +72,70 @@ namespace Infrastructure.Installers
         private void BindServices()
         {
             BindStaticDataService();
-            
             BindUIFactory();
             BindGameFactory();
-
-            Container.BindInterfacesTo<InputService>().AsSingle();
-            
+            BindInputServices();
             BindDataServices();
-
-            Container.BindInterfacesTo<RandomService>().AsSingle();
-            Container.BindInterfacesTo<WidgetProvider>().AsSingle();
-            Container.BindInterfacesTo<LevelService>().AsSingle();
-            
+            BindRandomServices();
+            BindLevelServices();
             BindFinishServices();
+            BindBattleServices();
+            BindGamePlayServices();
+        }
 
-            BindBattleService();
-
+        private void BindStaticDataService()
+        {
+            IStaticDataService staticDataService = new StaticDataService();
+            staticDataService.LoadData();
+            Container.Bind<IStaticDataService>().FromInstance(staticDataService).AsSingle();
+        }
+        
+        private void BindUIFactory()
+        {
+            Container.BindInterfacesTo<UIFactory>().AsSingle();
+            Container.BindInterfacesTo<WindowService>().AsSingle();
+            Container.BindInterfacesTo<HeroSetUpFactory>().AsSingle();
+        }
+        
+        private void BindGameFactory()
+        {
+            Container.BindInterfacesTo<GameFactory>().AsSingle();
+            Container.Bind<IHeroFactory>().To<HeroFactory>().AsSingle();
+        }
+        
+        private void BindInputServices()
+        {
+            Container.BindInterfacesTo<InputService>().AsSingle();
+        }
+        
+        private void BindDataServices()
+        {
+            Container.BindInterfacesTo<PersistenceProgressService>().AsSingle();
+            Container.BindInterfacesTo<LevelLocalProgressService>().AsSingle();
+            Container.BindInterfacesTo<StorageService>().AsSingle();
+            Container.BindInterfacesTo<SaveLoadService>().AsSingle();
+        }
+        
+        private void BindRandomServices()
+        {
+            Container.BindInterfacesTo<RandomService>().AsSingle();
+        }
+        
+        private void BindLevelServices()
+        {
+            Container.BindInterfacesTo<LevelService>().AsSingle();
+        }
+        
+        private void BindFinishServices()
+        {
+            Container.BindInterfacesTo<FinishService>().AsSingle();
+            Container.BindInterfacesTo<WinService>().AsSingle();
+            Container.BindInterfacesTo<LoseService>().AsSingle();
+        }
+        
+        private void BindGamePlayServices()
+        {
+            Container.BindInterfacesTo<WidgetProvider>().AsSingle();
             Container.Bind<IAIReporter>().To<AIReporter>().AsSingle();
             
             Container.BindInterfacesTo<HeroRegistry>().AsSingle();
@@ -99,42 +147,14 @@ namespace Infrastructure.Installers
             Container.Bind<ITargetPicker>().To<TargetPicker>().AsSingle();
             Container.Bind<IArtificialIntelligence>().To<UtilityAI>().AsSingle();
         }
-
-        private void BindFinishServices()
-        {
-            Container.BindInterfacesTo<FinishService>().AsSingle();
-            Container.BindInterfacesTo<WinService>().AsSingle();
-            Container.BindInterfacesTo<LoseService>().AsSingle();
-        }
-
-        private void BindBattleService()
+        
+        private void BindBattleServices()
         {
             Container.BindInterfacesTo<BattleTextPlayer>().AsSingle();
             Container.BindInterfacesTo<BattleConductor>().AsSingle();
             Container.Bind<IBattleStarter>().To<BattleStarter>().AsSingle();
         }
-
-        private void BindDataServices()
-        {
-            Container.BindInterfacesTo<PersistenceProgressService>().AsSingle();
-            Container.BindInterfacesTo<LevelLocalProgressService>().AsSingle();
-            Container.BindInterfacesTo<StorageService>().AsSingle();
-            Container.BindInterfacesTo<SaveLoadService>().AsSingle();
-        }
-
-        private void BindGameFactory()
-        {
-            Container.BindInterfacesTo<GameFactory>().AsSingle();
-            Container.Bind<IHeroFactory>().To<HeroFactory>().AsSingle();
-        }
-
-        private void BindUIFactory()
-        {
-            Container.BindInterfacesTo<UIFactory>().AsSingle();
-            Container.BindInterfacesTo<WindowService>().AsSingle();
-            Container.BindInterfacesTo<HeroSetUpFactory>().AsSingle();
-        }
-
+        
         private void BindGameStateMachine()
         {
             Container.Bind<GameStateFactory>().AsSingle();
@@ -149,13 +169,6 @@ namespace Infrastructure.Installers
         {
             ISceneLoader sceneLoader = new SceneLoader(Container.Resolve<ICoroutineRunner>());
             Container.Bind<ISceneLoader>().FromInstance(sceneLoader).AsSingle();
-        }
-
-        private void BindStaticDataService()
-        {
-            IStaticDataService staticDataService = new StaticDataService();
-            staticDataService.LoadData();
-            Container.Bind<IStaticDataService>().FromInstance(staticDataService).AsSingle();
         }
         
         private void BindGameStates()
