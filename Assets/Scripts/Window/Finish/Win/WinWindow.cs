@@ -1,27 +1,38 @@
+using System;
+using System.Collections.Generic;
 using Infrastructure.StateMachine;
 using Infrastructure.StateMachine.Game.States;
-using Services.Levels;
 using Services.SFX;
 using Services.StaticData;
+using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
+using DG.Tweening;
 
 namespace Window.Finish.Win
 {
     public class WinWindow : FinishWindow
     {
+        [SerializeField] private Text _textGems;
+        [SerializeField] private Text _textGolds;
+        [SerializeField] private List<Start> _stars;
+        [SerializeField] private Text _textWin;
+        
+        private string _win;
+        private string _golds;
+        private string _gems;
+        private int _countStars;
+        
         private IStateMachine<IGameState> _gameStateMachine;
-        private ILevelService _levelService;
         private IStaticDataService _staticDataService;
         private ISoundService _soundService;
         
         [Inject]
         public void Constructor(
-            ILevelService levelService,
             IStateMachine<IGameState> gameStateMachine,
             IStaticDataService staticDataService,
             ISoundService soundService)
         {
-            _levelService = levelService;
             _gameStateMachine = gameStateMachine;
             _staticDataService = staticDataService;
             _soundService = soundService;
@@ -36,6 +47,69 @@ namespace Window.Finish.Win
         {
             SubscribeEvents();
         }
+
+        public void SetGold(string gold) => _golds = gold;
+
+        public void SetGems(string gems) => _gems = gems;
+        
+        public void SetCountStars(int countStars) => _countStars = countStars;
+
+        public override void ResetWindow()
+        {
+            _mainContaienr.localScale = Vector3.zero;
+            _canvasGroupBG.alpha = 0;
+            _headerContainer.localScale = new Vector3(0, 1, 1);
+            
+            _win = _textWin.text;
+            
+            _textWin.text = string.Empty;
+            _textGolds.text = string.Empty;
+            _textGems.text = string.Empty;
+            
+            _buttonLoadLevel.transform.localScale = Vector3.zero;
+            _buttonExitToMenu.transform.localScale = Vector3.zero;
+        }
+
+        public override void OpenWindow(Action onFinished)
+        {
+            Sequence sequence = DOTween.Sequence();
+
+            sequence.Append(_canvasGroupBG.DOFade(1f, 0.5f).SetEase(Ease.Linear));
+            sequence.Join(_mainContaienr.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBounce));
+            sequence.AppendInterval(0.2f);
+            sequence.Append(_headerContainer.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBounce));
+            sequence.AppendInterval(0.2f);
+            sequence.Append(PlayStartShowAnimation());
+            sequence.Append(_textWin.DOText(_win, 0.25f).SetEase(Ease.Linear));
+            sequence.Append(_textGolds.DOText(_golds, 0.25f).SetEase(Ease.Linear));
+            sequence.Append(_textGems.DOText(_gems, 0.25f).SetEase(Ease.Linear));
+            sequence.AppendInterval(0.2f);
+            sequence.Append(_buttonLoadLevel.transform.DOScale(1, 0.5f).SetEase(Ease.OutBounce));
+            sequence.Join(_buttonExitToMenu.transform.DOScale(1, 0.5f).SetEase(Ease.OutBounce));
+            sequence.OnComplete(() =>
+            {
+                _buttonScalers.ForEach(x=> x.Reset());
+            });
+            
+            sequence.OnComplete(() => onFinished?.Invoke());
+        }
+        
+        private Tween PlayStartShowAnimation()
+        {
+            Sequence sequence = DOTween.Sequence();
+
+            for (int i = 0; i < _countStars; i++)
+            {
+                _stars[i].Filled();
+                var targetPosition = _stars[i].FilledStar.position;
+                _stars[i].transform.position += Vector3.up * 2f;
+                sequence.Append(_stars[i].transform.DOScale(Vector3.one * 0.8f, 0.25f).SetEase(Ease.Linear));
+                sequence.Join(_stars[i].transform.DOMove(targetPosition, 0.25f).SetEase(Ease.Linear));
+                sequence.Append(_stars[i].transform.DOScale(Vector3.one , 0.25f).SetEase(Ease.Linear));
+            }
+
+            return sequence;
+        }
         
         protected override void OnLoadLevelButtonClick()
         {
@@ -48,11 +122,5 @@ namespace Window.Finish.Win
             _soundService.ButtonClick();
             _gameStateMachine.Enter<LoadMenuState, string>(_staticDataService.GameConfig.MenuScene);
         }
-        
-        protected override void OnRestartLevelButtonClick()
-        {
-            _soundService.ButtonClick();
-            _gameStateMachine.Enter<LoadLevelState, string>(_staticDataService.GameConfig.GameScene);
-        }
-    }   
+    }
 }

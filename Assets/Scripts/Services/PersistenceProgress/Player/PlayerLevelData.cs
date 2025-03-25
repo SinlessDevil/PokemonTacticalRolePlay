@@ -17,6 +17,7 @@ namespace Services.PersistenceProgress.Player
     {
         public int ChapterId = 1;
         public int LevelId = 1;
-        [FormerlySerializedAs("Timer")] public float Time = 0f;
+        public int CountStart = 0;
+        public float Time = 0f;
     }
 }

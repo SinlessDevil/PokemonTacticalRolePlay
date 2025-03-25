@@ -5,8 +5,13 @@ namespace Services.Storage
     public interface IStorageService
     {
         event Action<Currency> ChangedCurrencyEvent;
-        void AddCurrency(CurrencyType currencyType, float value);
-        void SubstractCurrency(CurrencyType currencyType, float value);
+        
+        void AddCurrency(CurrencyType currencyType, int value);
+        void AddCurrency(Currency currency);
+        
+        void SubstractCurrency(CurrencyType currencyType, int value);
+        void SubstractCurrency(Currency currency);
+        
         Currency GetCurrency(CurrencyType currencyType);
     }
 }

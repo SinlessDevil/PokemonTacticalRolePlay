@@ -6,7 +6,7 @@ namespace Services.Storage
     public class Currency
     {
         public CurrencyType CurrencyType;
-        public float Value;
+        public int Value;
 
         public Currency(CurrencyType currencyType)
         {

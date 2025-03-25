@@ -863,7 +863,7 @@ GameObject:
   - component: {fileID: 7209740717584972742}
   - component: {fileID: 5660584497593966033}
   m_Layer: 5
-  m_Name: WinWIndow
+  m_Name: BonusWIndow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1774,7 +1774,7 @@ GameObject:
   - component: {fileID: 8667825979781281932}
   - component: {fileID: 6857957719246128393}
   m_Layer: 0
-  m_Name: Text_Victory
+  m_Name: Text_Bonus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1840,7 +1840,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: VICTORY!
+  m_Text: BONUS!
 --- !u!1 &7464849745227747931
 GameObject:
   m_ObjectHideFlags: 0

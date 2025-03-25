@@ -1,8 +1,12 @@
+using System.Collections.Generic;
+using Services.HeroRegistry;
 using Services.Levels;
 using Services.PersistenceProgress;
 using Services.SaveLoad;
+using Services.Storage;
 using Services.Timer;
 using Services.Window;
+using UnityEditor;
 using Window;
 using Window.Finish.Win;
 
@@ -14,50 +18,67 @@ namespace Services.Finish.Win
         private readonly ILevelService _levelService;
         private readonly ISaveLoadService _saveLoadService;
         private readonly IPersistenceProgressService _persistenceProgressService;
-        private readonly ITimeService _timeService;
+        private readonly IHeroRegistry _heroRegistry;
+        private readonly IStorageService _storageService;
 
         public WinService(
             IWindowService windowService, 
             ILevelService levelService,
             ISaveLoadService saveLoadService,
             IPersistenceProgressService persistenceProgressService,
-            ITimeService timeService)
+            IHeroRegistry heroRegistry,
+            IStorageService storageService)
         {
             _windowService = windowService;
             _levelService = levelService;
             _saveLoadService = saveLoadService;
             _persistenceProgressService = persistenceProgressService;
-            _timeService = timeService;
+            _heroRegistry = heroRegistry;
+            _storageService = storageService;
         }
         
         public void Win()
         {
-            CompleteLevel();
+            var currentGem = GetCurrencyGemText();
+            var currentGold = GetCurrencyGoldText();
+            var currentCount = GetCountStart();
             
+            ApplyCurrency();
+            CompleteLevel();
             CompleteTutor();
-
-            SetRecordText();
             
             SaveProgress();
             
             var window = _windowService.Open(WindowTypeId.Win);
             var winWindow = window.GetComponent<WinWindow>();
+            winWindow.SetGems(currentGem);
+            winWindow.SetGold(currentGold);
+            winWindow.SetCountStars(currentCount);
             winWindow.Initialize();
+            winWindow.ResetWindow();
+            winWindow.OpenWindow(null);
         }
 
         public void BonusWin()
         {
-            CompleteLevel();
+            var currentGem = GetCurrencyGemText();
+            var currentGold = GetCurrencyGoldText();
+            var currentCount = GetCountStart();
             
+            ApplyCurrency();
+            CompleteLevel();
             CompleteTutor();
-
-            SetRecordText();
             
             SaveProgress();
             
             var window = _windowService.Open(WindowTypeId.Bonus);
-            var bonusWindow = window.GetComponent<BonusWindow>();
-            bonusWindow.Initialize();
+            var winWindow = window.GetComponent<BonusWindow>();
+            winWindow.SetGems(currentGem);
+            winWindow.SetGold(currentGold);
+            winWindow.SetCountStars(currentCount);
+            winWindow.Initialize();
+            winWindow.ResetWindow();
+            winWindow.OpenWindow(null);
         }
         
         private void CompleteLevel()
@@ -69,34 +90,41 @@ namespace Services.Finish.Win
         {
             _persistenceProgressService.PlayerData.PlayerTutorialData.HasFirstCompleteLevel = true;
         }
-
-        private void SetRecordText()
+        
+        private void ApplyCurrency()
         {
-            var currentRecordTime = GetCurrentRecordTime();
-            var currentTime = _timeService.GetElapsedTime();
-            var currentLevelContainer = _levelService.GetCurrentLevelContainer();
-            
-            if(currentRecordTime == 0)
-            { 
-                return;   
-            }
-            
-            if (currentTime > currentRecordTime)
+            List<Currency> rewards = _levelService.GetCurrentLevelStaticData().Rewards;
+            foreach (Currency reward in rewards)
             {
-                var existingLevel = _persistenceProgressService.PlayerData.PlayerLevelData.LevelsComleted.Find(level => level == currentLevelContainer);
-                existingLevel.Time = currentTime;
+                _storageService.AddCurrency(reward);
             }
         }
-
-        private float GetCurrentRecordTime()
+        
+        private string GetCurrencyGemText()
         {
-            var currentLevelContainer = _levelService.GetCurrentLevelContainer();
-            if(currentLevelContainer == null)
-            {
-                return 0;
-            }
+            Currency currency = _levelService.GetCurrentLevelStaticData()
+                .Rewards
+                .Find(c => c.CurrencyType == CurrencyType.Gem);
+
+            var value = currency != null ? currency.Value : 0; 
             
-            return currentLevelContainer.Time;
+            return value.ToString();
+        }
+        
+        private string GetCurrencyGoldText()
+        {
+            Currency currency = _levelService.GetCurrentLevelStaticData()
+                .Rewards
+                .Find(c => c.CurrencyType == CurrencyType.Gold);
+
+            var value = currency != null ? currency.Value : 0;
+            
+            return value.ToString();
+        }
+
+        private int GetCountStart()
+        {
+            return _heroRegistry.PlayerTeam.Count;
         }
         
         private void SaveProgress()

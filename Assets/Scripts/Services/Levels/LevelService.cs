@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Services.HeroRegistry;
 using Services.PersistenceProgress;
 using Services.PersistenceProgress.Player;
 using Services.StaticData;
@@ -14,15 +15,18 @@ namespace Services.Levels
         private readonly IPersistenceProgressService _persistenceProgressService;
         private readonly IStaticDataService _staticDataService;
         private readonly ITimeService _timerService;
-        
+        private readonly IHeroRegistry _heroRegistry;
+
         public LevelService(
             IPersistenceProgressService persistenceProgressService,
             IStaticDataService staticDataService,
-            ITimeService timerService)
+            ITimeService timerService,
+            IHeroRegistry heroRegistry)
         {
             _persistenceProgressService = persistenceProgressService;
             _staticDataService = staticDataService;
             _timerService = timerService;
+            _heroRegistry = heroRegistry;
         }
         
         public LevelStaticData GetCurrentLevelStaticData()
@@ -111,11 +115,15 @@ namespace Services.Levels
                 {
                     ChapterId = playerData.LastProgress.ChapterId,
                     LevelId = playerData.LastProgress.LevelId,
+                    CountStart = _heroRegistry.PlayerTeam.Count,
                     Time = _timerService.GetElapsedTime()
                 });
             }
             else
             {
+                if(playerData.CurrentProgress.CountStart < _heroRegistry.PlayerTeam.Count)
+                    playerData.CurrentProgress.CountStart = _heroRegistry.PlayerTeam.Count;
+                
                 return;
             }
             

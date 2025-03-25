@@ -5,7 +5,7 @@ namespace Services.Storage
     [Serializable]
     public enum CurrencyType
     {
-        Gold,
-        Gems
+        Gold = 0,
+        Gem = 1
     }
 }
