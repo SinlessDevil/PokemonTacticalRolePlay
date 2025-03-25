@@ -75,6 +75,8 @@ namespace Infrastructure
         {
             if (_loadingTextCoroutine != null)
                 StopCoroutine(_loadingTextCoroutine);
+            
+            _loadingText.text = string.Empty;
         }
 
         private IEnumerator LoadingTextEffect()
