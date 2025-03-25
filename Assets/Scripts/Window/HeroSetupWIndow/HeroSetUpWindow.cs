@@ -7,14 +7,15 @@ using Zenject;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Services.Levels;
+using Window.HeroSetUpWIndow;
 
 namespace Window.HeroSetUpWindow
 {
     public class HeroSetUpWindow : MonoBehaviour
     {
         [SerializeField] private HorizontalLayoutGroup _containerChoice;
-        [SerializeField] private HorizontalLayoutGroup _containerSelection;
         [SerializeField] private HorizontalLayoutGroup _containerEnemies;
+        [SerializeField] private HorizontalLayoutSelecter _containerSelection;
         [SerializeField] private Text _textCount;
         [SerializeField] private CanvasGroup _canvasGroup;
         
@@ -156,8 +157,11 @@ namespace Window.HeroSetUpWindow
 
         private async UniTask PlayAnimationCardMoveAsync(HeroCard heroCard)
         {
+            var freeTargetContainer = _containerSelection.GetFreeTargetContainer();
+            freeTargetContainer.Selected = true;
+            
             Vector3 startPosition = heroCard.transform.position;
-            Vector3 endPosition = _containerSelection.transform.position;
+            Vector3 endPosition = freeTargetContainer.RectTransform.position;
     
             float offsetX = 400f;
             Vector3 middlePoint = (startPosition + endPosition) / 2 + Vector3.right * offsetX;
@@ -170,7 +174,7 @@ namespace Window.HeroSetUpWindow
                 .SetEase(Ease.Linear)
                 .ToUniTask();
             
-            heroCard.transform.SetParent(_containerSelection.transform, true);
+            heroCard.transform.SetParent(freeTargetContainer.RectTransform, true);
             
             await heroCard.transform.DOScale(0.3f, 0.15f)
                 .SetEase(Ease.Linear)
