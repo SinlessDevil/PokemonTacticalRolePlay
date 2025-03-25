@@ -22,7 +22,6 @@ namespace UI.Game
         public void SetRoot(Transform root) =>
             TextRoot = root;
 
-
         public void PlayText(string text, Color color, Vector3 from)
         {
             Vector3 position = Camera.main.WorldToScreenPoint(from);

@@ -29,6 +29,7 @@ namespace Infrastructure.StateMachine.Game.States
         private readonly IBattleStarter _battleStarter;
         private readonly ILoadingCurtain _loadingCurtain;
         private readonly IBattleFinisher _battleFinisher;
+        private readonly IBattleConductor _battleConductor;
 
         public GameLoopState(
             IInputService inputService,
@@ -42,7 +43,8 @@ namespace Infrastructure.StateMachine.Game.States
             IHeroRegistry heroRegistry,
             IBattleStarter battleStarter,
             ILoadingCurtain loadingCurtain,
-            IBattleFinisher battleFinisher)
+            IBattleFinisher battleFinisher, 
+            IBattleConductor battleConductor)
         {
             _inputService = inputService;
             _widgetProvider = widgetProvider;
@@ -56,6 +58,7 @@ namespace Infrastructure.StateMachine.Game.States
             _battleStarter = battleStarter;
             _loadingCurtain = loadingCurtain;
             _battleFinisher = battleFinisher;
+            _battleConductor = battleConductor;
         }
 
         public void Enter()
@@ -89,7 +92,8 @@ namespace Infrastructure.StateMachine.Game.States
             _battleFinisher.CleanUp();
             _battleStarter.CleanUp();
             _heroRegistry.CleanUp();
-
+            _battleConductor.CleanUp();
+            
             _inputService.CleanUp();
             _widgetProvider.CleanUpPool();
             _levelService.CleanUp();

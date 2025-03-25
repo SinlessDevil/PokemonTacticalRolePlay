@@ -68,6 +68,15 @@ namespace Services.Battle
 
         public void SetMode(BattleMode mode) => Mode = mode;
 
+        public void CleanUp()
+        {
+            _started = false;
+            _finished = false;
+            _turnTimerPaused = false;
+            _untilNextTurnTick = 0;
+            Mode = BattleMode.Manual;
+        }
+        
         private void PauseInManualMode()
         {
             if (Mode == BattleMode.Manual)
@@ -117,19 +126,10 @@ namespace Services.Battle
             }
         }
 
-        public void PerformHeroAction(HeroBehaviour readyHero)
+        private void PerformHeroAction(HeroBehaviour readyHero)
         {
             HeroAction heroAction = _artificialIntelligence.MakeBestDecision(readyHero);
-
-            // var chosenAction = new HeroAction
-            // {
-            //   Skill = TempSkill(readyHero),
-            //   Caster = readyHero,
-            //   TargetIds = TempTargets(readyHero) 
-            // };
-
             _skillSolver.ProcessHeroAction(heroAction);
-
             HeroActionProduced?.Invoke(heroAction);
         }
 

@@ -8,6 +8,7 @@ namespace Services.Battle
         void Stop();
         void ResumeTurnTimer();
         void SetMode(BattleMode mode);
+        void CleanUp();
         BattleMode Mode { get; }
 
         event Action<HeroAction> HeroActionProduced;
